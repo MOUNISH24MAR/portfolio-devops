@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Outlet, NavLink, Link, useNavigate } from "react-router-dom";
+import { useNavigate, Outlet, NavLink, Link } from "react-router-dom";
+import { useCompany } from "../context/CompanyContext";
 import {
   LayoutDashboard,
   Users,
@@ -12,11 +13,14 @@ import {
   ChevronRight,
   Settings,
   Database,
-  TrendingUp
+  TrendingUp,
+  MessageSquare,
+  Package
 } from "lucide-react";
 import "./admin_css/AdminLayout.css";
 
-const AdminLayout = ({ adminTitle }) => {
+const AdminLayout = () => {
+  const { company } = useCompany();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [expandedGroups, setExpandedGroups] = useState(['core']); // Default open
   const navigate = useNavigate();
@@ -56,7 +60,7 @@ const AdminLayout = ({ adminTitle }) => {
             <Menu size={24} />
           </button>
           <div className="admin-brand">
-            <span className="brand-logo">V R</span>
+            <span className="brand-logo">{company?.name ? company.name.split(' ').map(n => n[0]).join('').toUpperCase() : "VR"}</span>
             <span className="brand-divider">|</span>
             <span className="brand-context">Admin Intelligence</span>
           </div>
@@ -79,7 +83,7 @@ const AdminLayout = ({ adminTitle }) => {
       <aside className={`admin-sidebar ${sidebarOpen ? 'open' : ''}`}>
         <div className="sidebar-header">
           <Link to="/admin" className="logo" onClick={() => setSidebarOpen(false)}>
-            {adminTitle || "V R FASHIONS"}
+            {company?.name ? company.name.toUpperCase() : "V R FASHIONS"}
           </Link>
           <button className="close-btn" onClick={() => setSidebarOpen(false)}>
             <ChevronLeft size={20} />
@@ -96,7 +100,10 @@ const AdminLayout = ({ adminTitle }) => {
               <NavItem to="/admin" icon={LayoutDashboard} label="Executive Insights" end />
               <NavItem to="/admin/insights" icon={TrendingUp} label="Operational Insights" />
               <NavItem to="/admin/approvals" icon={ShieldCheck} label="Governance & Approvals" />
+              <NavItem to="/admin/company-approvals" icon={Database} label="Company Profiling" />
               <NavItem to="/admin/users" icon={Users} label="Management Directory" />
+              <NavItem to="/admin/inquiries" icon={MessageSquare} label="Contact Inquiries" />
+              <NavItem to="/admin/products" icon={Package} label="Product collections" />
             </div>
           </div>
 

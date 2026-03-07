@@ -1,15 +1,17 @@
 import { Link } from "react-router-dom";
+import { useCompany } from "../context/CompanyContext";
 import "./compo_css/Footer.css";
 
 function Footer() {
+  const { company } = useCompany();
+  const currentYear = new Date().getFullYear();
   return (
     <footer className="footer">
       <div className="footer-container">
         <div className="footer-section">
-          <h3 className="footer-title">VR Fashions</h3>
+          <h3 className="footer-title">{company?.name || "V R fashions"}</h3>
           <p className="footer-description">
-            100% Export Oriented Garment Factory. Established in 2016 by Mohan Raj and Renugadevi.
-            Specializing in premium knitted garments for global markets.
+            {company?.description || "100% Export Oriented Garment Factory. Specializing in premium knitted garments for global markets."}
           </p>
           <div className="footer-certifications">
             <span className="cert-badge">SA8000</span>
@@ -51,7 +53,7 @@ function Footer() {
       </div>
 
       <div className="footer-bottom">
-        <p>&copy; 2026 V R fashions. All rights reserved.</p>
+        <p>&copy; {currentYear} {company?.name || "V R fashions"}. All rights reserved.</p>
         <div className="footer-legal">
           <a href="#privacy">Privacy Policy</a>
           <span>•</span>

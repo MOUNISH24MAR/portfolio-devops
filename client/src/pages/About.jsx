@@ -1,16 +1,18 @@
+import { useCompany } from "../context/CompanyContext";
 import "./page_css/About.css";
 import ScrollAnimatedSection from "../components/ScrollAnimatedSection";
 
 function About() {
+  const { company } = useCompany();
   return (
     <div className="about">
       {/* Page Header */}
       <section className="section-light about-header">
         <div className="container">
           <ScrollAnimatedSection animation="animate-fade-in-up">
-            <h1 className="page-title">V R fashions.</h1>
+            <h1 className="page-title">{company?.name || "V R fashions."}</h1>
             <p className="page-subtitle">
-              Excellence in knitted garments and global cotton apparel manufacturing.
+              {company?.description?.substring(0, 100)}...
             </p>
             <div className="section-divider"></div>
           </ScrollAnimatedSection>
@@ -26,9 +28,8 @@ function About() {
                 <h2>Our History</h2>
                 <div className="section-divider"></div>
                 <p>
-                  Established in 2016 by Mohan Raj and Renugadevi, VR Fashions began its journey
-                  with 40 sets of machinery in Kovilvali, Tirupur. Our founder, Mohan Raj, brings
-                  over 25 years of deep industry expertise to the operational floor.
+                  Established in {company?.establishedYear || "2016"} by Mohan Raj and Renugadevi, {company?.name || "VR Fashions"} began its journey
+                  with 40 sets of machinery in Kovilvali, Tirupur.
                 </p>
                 <p>
                   Today, we operate as a 100% export-oriented factory, specializing in high-quality
@@ -41,7 +42,7 @@ function About() {
             <ScrollAnimatedSection animation="animate-fade-in-right">
               <div className="story-stats">
                 <div className="story-stat">
-                  <span className="stat-value">2016</span>
+                  <span className="stat-value">{company?.establishedYear || "2016"}</span>
                   <span className="stat-text">Established</span>
                 </div>
                 <div className="story-stat">

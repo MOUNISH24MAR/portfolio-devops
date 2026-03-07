@@ -7,6 +7,10 @@ const exportSchema = new mongoose.Schema({
     volume: { type: Number, required: true },
     value: { type: Number },
     year: { type: Number, required: true },
+    buyerId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Buyer'
+    },
     managerId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
@@ -22,6 +26,11 @@ const exportSchema = new mongoose.Schema({
         rejectionReason: { type: String }
     }
 }, { timestamps: true });
+
+// Performance Indexes for Analytics
+exportSchema.index({ submissionStatus: 1, region: 1 });
+exportSchema.index({ buyerId: 1 });
+exportSchema.index({ createdAt: 1 });
 
 const Export = mongoose.models.Export || mongoose.model("Export", exportSchema);
 module.exports = Export;

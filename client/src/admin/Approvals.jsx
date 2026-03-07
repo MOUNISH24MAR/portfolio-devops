@@ -26,7 +26,7 @@ const Approvals = () => {
     }
   };
 
-  const handleAction = async (id, action) => {
+  const handleAction = async (id, action, isCompany = false) => {
     try {
       const res = await fetch(`http://localhost:5000/api/approvals/${id}`, {
         method: "POST",
@@ -34,7 +34,7 @@ const Approvals = () => {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${localStorage.getItem("token")}`
         },
-        body: JSON.stringify({ action, comments })
+        body: JSON.stringify({ action, comments, isCompany })
       });
 
       if (res.ok) {
@@ -117,43 +117,45 @@ const Approvals = () => {
               <div className="data-snapshot">
                 <h3>Submission Data</h3>
 
-                {/* Media Preview Logic */}
-                {selectedSubmission.entityType === 'Media' && (
+                {/* Media & Product Preview Logic */}
+                {(selectedSubmission.entityType === 'Media' || selectedSubmission.entityType === 'Product') && (
                   <div className="media-preview-container">
-                    {selectedSubmission.dataSnapshot.type === 'image' ? (
-                      <img
-                        src={selectedSubmission.dataSnapshot.url}
-                        alt="Preview"
-                        className="snapshot-image"
-                      />
-                    ) : (
-                      <div className="video-preview">
-                        {(selectedSubmission.dataSnapshot.url.includes('youtube.com') || selectedSubmission.dataSnapshot.url.includes('youtu.be')) ? (
-                          <iframe
-                            className="snapshot-video"
-                            src={`https://www.youtube.com/embed/${selectedSubmission.dataSnapshot.url.match(/(?:youtu\.be\/|youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=))([^"&?\/\s]{11})/)?.[1]}`}
-                            frameBorder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                          ></iframe>
-                        ) : selectedSubmission.dataSnapshot.url.includes('vimeo.com') ? (
-                          <iframe
-                            className="snapshot-video"
-                            src={`https://player.vimeo.com/video/${selectedSubmission.dataSnapshot.url.split('/').pop()}`}
-                            frameBorder="0"
-                            allow="autoplay; fullscreen; picture-in-picture"
-                            allowFullScreen
-                          ></iframe>
-                        ) : (
-                          <video controls className="snapshot-video">
-                            <source src={selectedSubmission.dataSnapshot.url} />
-                            Your browser does not support the video tag.
-                          </video>
-                        )}
-                        <div className="source-overlay">
-                          Source: {selectedSubmission.dataSnapshot.url.length > 50 ? selectedSubmission.dataSnapshot.url.substring(0, 50) + '...' : selectedSubmission.dataSnapshot.url}
+                    {(selectedSubmission.dataSnapshot.url || selectedSubmission.dataSnapshot.image) && (
+                      selectedSubmission.dataSnapshot.type === 'video' ? (
+                        <div className="video-preview">
+                          {(selectedSubmission.dataSnapshot.url.includes('youtube.com') || selectedSubmission.dataSnapshot.url.includes('youtu.be')) ? (
+                            <iframe
+                              className="snapshot-video"
+                              src={`https://www.youtube.com/embed/${selectedSubmission.dataSnapshot.url.match(/(?:youtu\.be\/|youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=))([^"&?\/\s]{11})/)?.[1]}`}
+                              frameBorder="0"
+                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                              allowFullScreen
+                            ></iframe>
+                          ) : selectedSubmission.dataSnapshot.url.includes('vimeo.com') ? (
+                            <iframe
+                              className="snapshot-video"
+                              src={`https://player.vimeo.com/video/${selectedSubmission.dataSnapshot.url.split('/').pop()}`}
+                              frameBorder="0"
+                              allow="autoplay; fullscreen; picture-in-picture"
+                              allowFullScreen
+                            ></iframe>
+                          ) : (
+                            <video controls className="snapshot-video">
+                              <source src={selectedSubmission.dataSnapshot.url} />
+                              Your browser does not support the video tag.
+                            </video>
+                          )}
+                          <div className="source-overlay">
+                            Source: {selectedSubmission.dataSnapshot.url.length > 50 ? selectedSubmission.dataSnapshot.url.substring(0, 50) + '...' : selectedSubmission.dataSnapshot.url}
+                          </div>
                         </div>
-                      </div>
+                      ) : (
+                        <img
+                          src={selectedSubmission.dataSnapshot.url || selectedSubmission.dataSnapshot.image}
+                          alt="Preview"
+                          className="snapshot-image"
+                        />
+                      )
                     )}
                   </div>
                 )}
@@ -176,6 +178,11 @@ const Approvals = () => {
 
               {/* Approval Form */}
               <div className="approval-form">
+                {selectedSubmission.isCompany && (
+                  <div style={{ padding: '12px', backgroundColor: '#e9fac8', border: '1px solid #c0eb75', borderRadius: '4px', marginBottom: '16px', fontSize: '0.85rem' }}>
+                    <strong>Tip:</strong> You can view a detailed side-by-side version comparison on the <a href="/admin/company-approvals" style={{ color: '#2b8a3e', fontWeight: 'bold', textDecoration: 'underline' }}>Company Profiling</a> page.
+                  </div>
+                )}
                 <label htmlFor="comments">Verification Comments</label>
                 <textarea
                   id="comments"
@@ -187,13 +194,13 @@ const Approvals = () => {
                 <div className="form-buttons">
                   <button
                     className="approve-btn"
-                    onClick={() => handleAction(selectedSubmission._id, 'Approved')}
+                    onClick={() => handleAction(selectedSubmission._id, 'Approved', selectedSubmission.isCompany)}
                   >
                     <CheckCircle size={18} /> <span>Approve</span>
                   </button>
                   <button
                     className="reject-btn"
-                    onClick={() => handleAction(selectedSubmission._id, 'Rejected')}
+                    onClick={() => handleAction(selectedSubmission._id, 'Rejected', selectedSubmission.isCompany)}
                   >
                     <XCircle size={18} /> <span>Reject</span>
                   </button>

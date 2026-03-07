@@ -1,17 +1,11 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ScrollAnimatedSection from "../components/ScrollAnimatedSection";
+import { useCompany } from "../context/CompanyContext";
 import "./page_css/Home.css";
 import "../styles/scrollAnimations.css";
 
 function Home() {
-  const [company, setCompany] = useState(null);
-  useEffect(() => {
-    fetch("http://localhost:5000/api/company")
-      .then(res => res.json())
-      .then(data => setCompany(data))
-      .catch(err => console.error("Error fetching company data:", err));
-  }, []);
+  const { company } = useCompany();
 
   return (
     <div className="home">
@@ -23,10 +17,10 @@ function Home() {
               <div className="hero-content">
                 <span className="hero-label">The Foundation</span>
                 <h1 className="hero-title">
-                  V R fashions
+                  {company?.name || "V R fashions"}
                 </h1>
                 <p className="hero-tagline">
-                  Precision in Knitted Garments.
+                  {company?.tagline || "Precision in Knitted Garments."}
                 </p>
                 <p className="hero-subtitle">
                   {company ? company.description : "Premier manufacturer of cotton-related apparel, specialized in banian cloth, specialty collections, and custom designed t-shirts."}
@@ -100,7 +94,7 @@ function Home() {
           <ScrollAnimatedSection animation="animate-fade-in-up">
             <div className="cta-box">
               <h2 className="section-title">Initiate a Project</h2>
-              <p>Partner with V R fashions for industry-leading knitted garment manufacturing.</p>
+              <p>Partner with {company?.name || "V R fashions"} for industry-leading knitted garment manufacturing.</p>
               <Link to="/contact" className="btn btn-primary btn-large">Request Partnership</Link>
             </div>
           </ScrollAnimatedSection>

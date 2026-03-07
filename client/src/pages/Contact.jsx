@@ -7,19 +7,42 @@ function Contact() {
     name: "", email: "", company: "", phone: "", subject: "", message: ""
   });
 
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState("idle"); // idle, submitting, success, error
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({ name: "", email: "", company: "", phone: "", subject: "", message: "" });
-    }, 3000);
+    setStatus("submitting");
+    setErrorMessage("");
+
+    try {
+      const response = await fetch("http://localhost:5000/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setStatus("success");
+        setFormData({ name: "", email: "", company: "", phone: "", subject: "", message: "" });
+        setTimeout(() => setStatus("idle"), 5000);
+      } else {
+        setStatus("error");
+        setErrorMessage(data.msg || (data.errors ? data.errors[0].msg : "Submission failed"));
+      }
+    } catch (err) {
+      console.error(err);
+      setStatus("error");
+      setErrorMessage("Service unreachable. Please try again later.");
+    }
   };
 
   return (
@@ -47,29 +70,60 @@ function Contact() {
                 <h2>Portal / Log Inquiry</h2>
                 <div className="section-divider"></div>
 
-                {submitted && (
-                  <div className="success-tagline">
-                    ✓ Your inquiry has been documented. Return communication expected within 24hr.
+                {status === "success" ? (
+                  <div className="discovery-success-card animate-scale-in">
+                    <div className="success-icon-ring">✓</div>
+                    <h3>Transmission Complete</h3>
+                    <p>Your business inquiry has been secured in our system. A response will be generated within 24 hours.</p>
+                    <button className="btn btn-muted" onClick={() => setStatus("idle")}>Begin New Log</button>
                   </div>
-                )}
+                ) : (
+                  <>
+                    <form onSubmit={handleSubmit} className="editorial-form">
+                      {status === "error" && (
+                        <div className="error-tagline" style={{ color: "#d9534f", marginBottom: "1.5rem", fontSize: "0.9rem", borderLeft: "2px solid #d9534f", paddingLeft: "1rem" }}>
+                          ⚠ {errorMessage}
+                        </div>
+                      )}
+                      
+                      <div className="form-row">
+                        <div className="input-group">
+                          <label>Identity</label>
+                          <input type="text" name="name" value={formData.name} onChange={handleChange} required placeholder="Full Name" disabled={status === "submitting"} />
+                        </div>
+                        <div className="input-group">
+                          <label>Electronic Mail</label>
+                          <input type="email" name="email" value={formData.email} onChange={handleChange} required placeholder="email@address.com" disabled={status === "submitting"} />
+                        </div>
+                      </div>
 
-                <form onSubmit={handleSubmit} className="editorial-form">
-                  <div className="form-row">
-                    <div className="input-group">
-                      <label>Identity</label>
-                      <input type="text" name="name" value={formData.name} onChange={handleChange} required placeholder="Full Name" />
-                    </div>
-                    <div className="input-group">
-                      <label>Electronic Mail</label>
-                      <input type="email" name="email" value={formData.email} onChange={handleChange} required placeholder="email@address.com" />
-                    </div>
-                  </div>
-                  <div className="input-group">
-                    <label>Inquiry Context</label>
-                    <textarea name="message" value={formData.message} onChange={handleChange} required rows="6" placeholder="Document your requirements here..."></textarea>
-                  </div>
-                  <button type="submit" className="btn btn-primary btn-full">Submit Protocol</button>
-                </form>
+                      <div className="form-row">
+                        <div className="input-group">
+                          <label>Organization / Company</label>
+                          <input type="text" name="company" value={formData.company} onChange={handleChange} placeholder="Company Name" disabled={status === "submitting"} />
+                        </div>
+                        <div className="input-group">
+                          <label>Phone Reference</label>
+                          <input type="tel" name="phone" value={formData.phone} onChange={handleChange} placeholder="+1-xxx-xxx-xxxx" disabled={status === "submitting"} />
+                        </div>
+                      </div>
+
+                      <div className="input-group">
+                        <label>Inquiry Subject</label>
+                        <input type="text" name="subject" value={formData.subject} onChange={handleChange} placeholder="What is this regarding?" disabled={status === "submitting"} />
+                      </div>
+
+                      <div className="input-group">
+                        <label>Inquiry Context</label>
+                        <textarea name="message" value={formData.message} onChange={handleChange} required rows="5" placeholder="Document your requirements here..." disabled={status === "submitting"}></textarea>
+                      </div>
+
+                      <button type="submit" className="btn btn-primary btn-full" disabled={status === "submitting"}>
+                        {status === "submitting" ? "Transmitting..." : "Submit Protocol"}
+                      </button>
+                    </form>
+                  </>
+                )}
               </div>
             </ScrollAnimatedSection>
 

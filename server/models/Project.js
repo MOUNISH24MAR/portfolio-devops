@@ -50,5 +50,9 @@ const ProjectSchema = new mongoose.Schema({
     }
 }, { timestamps: true });
 
+// Performance Indexes for Analytics
+ProjectSchema.index({ submissionStatus: 1, status: 1 });
+ProjectSchema.index({ createdAt: 1 });
+
 const Project = mongoose.models.Project || mongoose.model("Project", ProjectSchema);
 module.exports = Project;

@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Menu, X } from "lucide-react";
+import { useCompany } from "../context/CompanyContext";
 import "./compo_css/Navbar.css";
 
 function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { company } = useCompany();
 
   const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
   const closeMobileMenu = () => setMobileMenuOpen(false);
@@ -13,7 +15,7 @@ function Navbar() {
     <nav className="navbar">
       <div className="navbar-container">
         <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
-          <span className="logo-text">VR Fashions</span>
+          <span className="logo-text">{company?.name || "V R fashions"}</span>
           <span className="logo-tagline">Excellence in Knitted Garments</span>
         </Link>
 

@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { useCompany } from "../context/CompanyContext";
 import "./mang_css/ManagerDashboard.css";
 
-const ManagerDashboard = ({ managerHeader }) => {
+const ManagerDashboard = () => {
+  const { company } = useCompany();
   const navigate = useNavigate();
   const username = localStorage.getItem("username") || "Manager";
 
@@ -55,7 +57,7 @@ const ManagerDashboard = ({ managerHeader }) => {
     <div className="manager-dashboard">
       <header className="manager-header">
         <div>
-          <h1>{managerHeader || "V R FASHIONS OPERATIONS"}</h1>
+          <h1>{(company?.name?.toUpperCase() + " OPERATIONS") || "V R FASHIONS OPERATIONS"}</h1>
         </div>
         <div className="user-info">
           <span className="role-badge">Content Manager</span>

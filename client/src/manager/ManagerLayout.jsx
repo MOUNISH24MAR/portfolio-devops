@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Outlet, NavLink, Link, useNavigate } from "react-router-dom";
+import { useCompany } from "../context/CompanyContext";
 import {
   Menu, X, LayoutDashboard, Building2, Users,
   Briefcase, FileText, Globe, DollarSign,
@@ -8,6 +9,7 @@ import {
 import "./mang_css/ManagerLayout.css";
 
 const ManagerLayout = () => {
+  const { company } = useCompany();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const navigate = useNavigate();
   const username = localStorage.getItem("username");
@@ -44,7 +46,7 @@ const ManagerLayout = () => {
             <Menu size={24} color="var(--text-primary)" />
           </button>
           <div className="app-brand">
-            <span className="brand-name">Internal Hub</span>
+            <span className="brand-name">{company?.name || "V R fashions"}</span>
             <span className="brand-divider">|</span>
             <span className="brand-context">Manager Portal</span>
           </div>
@@ -102,6 +104,7 @@ const ManagerLayout = () => {
             <div className="group-label">Content</div>
             <NavItem to="/manager/media" icon={Image} label="Media Assets" />
             <NavItem to="/manager/updates" icon={Newspaper} label="News & Updates" />
+            <NavItem to="/manager/products" icon={Package} label="Product Catalogue" />
           </div>
         </div>
 

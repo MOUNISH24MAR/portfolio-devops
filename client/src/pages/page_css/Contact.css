@@ -44,6 +44,58 @@
     line-height: 1.5;
 }
 
+.discovery-success-card {
+    text-align: center;
+    padding: clamp(40px, 6vw, 80px) clamp(20px, 4vw, 40px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.success-icon-ring {
+    width: clamp(60px, 8vw, 80px);
+    height: clamp(60px, 8vw, 80px);
+    border-radius: 50%;
+    border: 1px solid var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.discovery-success-card h3 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 300;
+    letter-spacing: -0.5px;
+}
+
+.discovery-success-card p {
+    color: var(--text-secondary);
+    max-width: 40ch;
+    margin: 0 auto 1rem;
+    line-height: 1.6;
+}
+
+.btn-muted {
+    background: none;
+    border: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+    padding: 10px 24px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-muted:hover {
+    border-color: var(--text-primary);
+    color: var(--text-primary);
+}
+
 /* Editorial Form */
 .editorial-form {
     display: flex;

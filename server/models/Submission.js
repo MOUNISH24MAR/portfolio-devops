@@ -9,7 +9,7 @@ const SubmissionSchema = new mongoose.Schema({
     entityType: {
         type: String,
         required: true,
-        enum: ['Employee', 'Project', 'OperationalReport', 'Export', 'RawMaterial', 'Buyer', 'Financial', 'Media', 'Update', 'Company']
+        enum: ['Employee', 'Project', 'OperationalReport', 'Export', 'RawMaterial', 'Buyer', 'Financial', 'Media', 'Update', 'Company', 'Product']
     },
     entityId: {
         type: mongoose.Schema.Types.ObjectId,
@@ -30,6 +30,10 @@ const SubmissionSchema = new mongoose.Schema({
         default: Date.now
     }
 }, { timestamps: true });
+
+// Performance Indexes for Analytics
+SubmissionSchema.index({ status: 1, entityType: 1 });
+SubmissionSchema.index({ createdAt: 1 });
 
 const Submission = mongoose.models.Submission || mongoose.model("Submission", SubmissionSchema);
 module.exports = Submission;

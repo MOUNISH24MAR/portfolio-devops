@@ -792,3 +792,125 @@
         max-height: 100vh;
     }
 }
+
+/* OPERATIONAL REPORT NARRATIVE */
+.report-narrative-card {
+    background: white;
+    border: 1px solid var(--border-subtle);
+    padding: 40px;
+    margin-top: 20px;
+}
+
+.report-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--admin-text-primary);
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+}
+
+.report-title {
+    font-size: 20px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.report-date {
+    font-size: 13px;
+    color: var(--admin-text-secondary);
+    font-family: monospace;
+}
+
+.report-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.report-section-narrative h4 {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    color: var(--admin-text-primary);
+    border-left: 3px solid var(--admin-accent);
+    padding-left: 10px;
+}
+
+.report-section-narrative p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #444;
+    text-align: justify;
+}
+
+.report-bottom-insights {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding-top: 30px;
+    border-top: 1px solid var(--border-subtle);
+}
+
+.insight-column {
+    padding: 20px;
+    background: #f8f9fa;
+}
+
+.insight-column.observations {
+    border-left: 4px solid var(--admin-success);
+}
+
+.insight-column.recommendations {
+    border-left: 4px solid var(--admin-accent);
+}
+
+.insight-column h5 {
+    font-size: 14px;
+    font-weight: 800;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.insight-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.insight-column li {
+    font-size: 13px;
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 20px;
+    line-height: 1.4;
+}
+
+.insight-column li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--admin-accent);
+    font-weight: bold;
+}
+
+.report-placeholder {
+    padding: 60px;
+    text-align: center;
+    background: #fdfdfd;
+    border: 1px dashed var(--border-subtle);
+    color: var(--admin-text-secondary);
+    font-style: italic;
+}
+
+@media (max-width: 900px) {
+    .report-grid, .report-bottom-insights {
+        grid-template-columns: 1fr;
+    }
+    
+    .report-narrative-card {
+        padding: 20px;
+    }
+}

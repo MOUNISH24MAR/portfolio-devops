@@ -279,11 +279,6 @@ const AdminDashboard = () => {
           <div className="kpi-value">${(stats?.kpis?.totalExportsValue / 1000).toFixed(1)}K</div>
           <div className="kpi-label">Export Valuation</div>
         </div>
-        <div className="kpi-card">
-          <div className="kpi-header"><Shield size={isMobile ? 16 : 18} color="var(--admin-success)" /></div>
-          <div className="kpi-value">{stats?.kpis?.accuracyRate}</div>
-          <div className="kpi-label">System Integrity</div>
-        </div>
       </div>
 
       {/* 2. GOVERNANCE & APPROVALS (DONUT) */}
@@ -353,7 +348,7 @@ const AdminDashboard = () => {
                       {sub.status !== 'Approved' && (
                         <button
                           className="view-btn"
-                          onClick={() => window.location.href = '/admin/approvals'}
+                          onClick={() => window.location.href = sub.isCompany ? '/admin/company-approvals' : '/admin/approvals'}
                         >
                           Review
                         </button>
@@ -740,35 +735,7 @@ const AdminDashboard = () => {
         </div>
       </section>
 
-      {/* 7. AI INSIGHTS */}
-      <section className="dashboard-section">
-        <div className="insights-panel">
-          <div className="insights-badge">
-            <Cpu size={isMobile ? 12 : 14} style={{ marginRight: '8px' }} />
-            INTELLIGENCE v2.4
-          </div>
-          <h2>Predictive Operations Analysis</h2>
-          <p>
-            AI core detected seasonal deviates in <strong>{stats?.supplyChainData?.exports?.[0]?.name || 'target regions'}</strong>.
-            Recommend increasing stock of organic fibers by 15% to maintain safety buffers during the scheduled Q2 spike.
-          </p>
-          <div style={{
-            marginTop: isMobile ? '24px' : '40px',
-            display: 'flex',
-            gap: isMobile ? '16px' : '20px',
-            flexWrap: 'wrap'
-          }}>
-            <div className="insight-stat">
-              <span>Reliability Index</span>
-              <strong>99.4%</strong>
-            </div>
-            <div className="insight-stat">
-              <span>Node Latency</span>
-              <strong>14ms</strong>
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {/* 8. ANALYSIS MODAL / PANEL */}
       {analysisResult && (

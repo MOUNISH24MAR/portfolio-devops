@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const buyerSchema = new mongoose.Schema({
     name: { type: String, required: true },
     region: { type: String, required: true },
+    country: { type: String, required: true },
     industry: { type: String, required: true },
     relationshipDuration: { type: String },
     orderFrequency: {
@@ -25,6 +26,10 @@ const buyerSchema = new mongoose.Schema({
         rejectionReason: { type: String }
     }
 }, { timestamps: true });
+
+// Performance Indexes for Analytics
+buyerSchema.index({ submissionStatus: 1, region: 1 });
+buyerSchema.index({ createdAt: 1 });
 
 const Buyer = mongoose.models.Buyer || mongoose.model("Buyer", buyerSchema);
 module.exports = Buyer;

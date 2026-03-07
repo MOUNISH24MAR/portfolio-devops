@@ -144,14 +144,14 @@
     background-color: var(--bg-muted);
 }
 
-.nav-link.active {
+.nav-link.active:not(.nav-link-cta) {
     font-weight: 500;
     border-left: 3px solid var(--text-primary);
 }
 
 /* CTA Link */
 .nav-link-cta {
-    border: 1px solid var(--text-primary);
+    border: 1px solid var(--text-primary) !important;
     padding: 14px 24px;
     background: transparent;
     transition: all 0.3s ease;
@@ -235,6 +235,9 @@
         font-size: 0.85rem;
         border-radius: 0;
         background: transparent !important;
+    }
+
+    .nav-link:not(.nav-link-cta) {
         border-left: none !important;
     }
 
@@ -254,13 +257,15 @@
     }
 
     .nav-link-cta {
-        border: 1px solid var(--text-primary);
+        border: 1px solid var(--text-primary) !important;
         padding: 10px 24px;
         margin-top: 0;
+        border-radius: 4px;
     }
 
-    .nav-link-cta::after {
-        display: none;
+    .nav-link-cta::after,
+    .nav-link-cta.active::after {
+        display: none !important;
     }
 
     .nav-link-cta:hover {

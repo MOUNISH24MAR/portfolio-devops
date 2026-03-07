@@ -14,6 +14,7 @@ const approvalRoutes = require("./routes/approvals");
 const adminRoutes = require("./routes/admin");
 const mediaRoutes = require("./routes/media");
 const updateRoutes = require("./routes/updates");
+const contactRoutes = require("./routes/contact");
 
 const app = express();
 app.use(cors());
@@ -31,11 +32,12 @@ app.use("/api/approvals", approvalRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/media", mediaRoutes);
 app.use("/api/updates", updateRoutes);
+app.use("/api/contact", contactRoutes);
 app.use("/api/dashboard", require("./routes/dashboard"));
 
 
 // MongoDB connection
-mongoose.connect("mongodb://127.0.0.1:27017/garment-portfolio")
+mongoose.connect(process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/garment-portfolio")
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.log(err));
 

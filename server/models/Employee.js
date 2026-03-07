@@ -57,5 +57,9 @@ const EmployeeSchema = new mongoose.Schema({
     }
 }, { timestamps: true });
 
+// Performance Indexes for Analytics
+EmployeeSchema.index({ submissionStatus: 1, department: 1 });
+EmployeeSchema.index({ createdAt: 1 });
+
 const Employee = mongoose.models.Employee || mongoose.model("Employee", EmployeeSchema);
 module.exports = Employee;

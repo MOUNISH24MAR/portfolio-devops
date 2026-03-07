@@ -83,8 +83,33 @@ const seed = async () => {
         name: "VR Fashions",
         description: "Established in 2016 by Mohan Raj and Renugadevi, VR Fashions is a 100% export-oriented factory based in Tirupur. We specialize in high-quality knitted garments including T-shirts, tops, sweatshirts, pajama sets, and nightwear for men, ladies, and kids, producing 50,000 pieces per month.",
         location: "85, 86, Vivekanandha Nagar, Kovilvali, Dharapuram Road, Tirupur-641606",
-        establishedYear: 2016
-    });
+        establishedYear: 2016,
+        status: 'APPROVED',
+        version: 1,
+        submittedBy: admin._id,
+        approvedBy: admin._id,
+        approvedAt: new Date()
+    });    // 4. Seeding Buyers
+    console.log("Generating Buyers...");
+    const realBuyers = [
+        { name: "SAHINLER", region: "European Union", country: "France" },
+        { name: "VRF CORP", region: "North America", country: "USA" },
+        { name: "TOKYO RETAIL", region: "East Asia", country: "Japan" }
+    ];
+    const buyerDocs = [];
+    for (let buyer of realBuyers) {
+        const b = await Buyer.create({
+            name: buyer.name,
+            region: buyer.region,
+            country: buyer.country,
+            industry: "Importer / Retailer",
+            relationshipDuration: "Multiple years",
+            orderFrequency: "High",
+            managerId: managers[0]._id,
+            submissionStatus: 'Approved'
+        });
+        buyerDocs.push(b);
+    }
 
     // 3. Generate Time-Series Data (Oct 2024 to Dec 2025)
     console.log("Generating 15 months of operational data...");
@@ -98,17 +123,19 @@ const seed = async () => {
         const year = d.getFullYear();
         const monthIndex = d.getMonth();
         const manager = managers[getRandomInt(0, managers.length - 1)];
+        const buyer = buyerDocs[getRandomInt(0, buyerDocs.length - 1)];
 
         // --- EXPORTS ---
         const preferredRegions = ['European Union', 'North America'];
-        const region = preferredRegions[getRandomInt(0, 1)];
-        const country = (region === 'European Union') ? (getRandomInt(0, 1) === 0 ? 'France' : 'Germany') : 'USA';
+        const region = buyer.region;
+        const country = buyer.country;
         let seasonalMultiplier = (monthIndex >= 9) ? 1.4 : (monthIndex <= 2 ? 1.2 : 0.9);
         const volume = Math.floor(getRandomInt(5000, 15000) * seasonalMultiplier);
         const value = Math.floor(volume * getRandomInt(8, 12));
 
         await Export.create({
             region, country, category: 'Knitted Wear', volume, value, year,
+            buyerId: buyer._id,
             managerId: manager._id, submissionStatus: 'Approved', createdAt: d
         });
 
@@ -121,6 +148,9 @@ const seed = async () => {
         await Financial.create({
             revenueRange: `${revenue - 5000}-${revenue + 5000}`,
             profitRange: `${profit - 2000}-${profit + 2000}`,
+            revenue,
+            expenses,
+            profit,
             growthIndicator: getRandomInt(-2, 12),
             costCategories: [
                 { name: 'Production', amount: Math.floor(expenses * 0.6) },
@@ -129,24 +159,6 @@ const seed = async () => {
             year, managerId: manager._id, submissionStatus: 'Approved', createdAt: d
         });
 
-    }
-
-    // 4. Seeding Buyers
-    console.log("Generating Buyers...");
-    const realBuyers = [
-        { name: "SAHINLER", region: "European Union", country: "France" },
-        { name: "VRF CORP", region: "North America", country: "USA" }
-    ];
-    for (let buyer of realBuyers) {
-        await Buyer.create({
-            name: buyer.name,
-            region: buyer.region,
-            industry: "Importer / Retailer",
-            relationshipDuration: "Multiple years",
-            orderFrequency: "High",
-            managerId: managers[0]._id,
-            submissionStatus: 'Approved'
-        });
     }
 
     // 5. Create Active Submissions (fixed schema issues)
@@ -214,17 +226,21 @@ const seed = async () => {
                 await Activity.create({
                     userId: admin._id,
                     action: status,
+                    actionType: status === 'Approved' ? 'VERIFY' : 'REJECT',
                     entityId: entity._id,
                     entityType: type,
-                    details: `${status} ${type} record`
+                    details: `${status} ${type} record`,
+                    changeSummary: `Administrative ${status.toLowerCase()} for ${type} node: ${entity.id || entity.projectId || entity.employeeId}`
                 });
             } else {
                 await Activity.create({
                     userId: mgr._id,
                     action: 'Submitted',
+                    actionType: 'CREATE',
                     entityId: entity._id,
                     entityType: type,
-                    details: `Submitted ${type} for approval`
+                    details: `Submitted ${type} for approval`,
+                    changeSummary: `New ${type} record queued for verification: ${entity.id || entity.projectId || entity.employeeId}`
                 });
             }
         }

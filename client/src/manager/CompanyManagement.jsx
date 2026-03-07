@@ -23,6 +23,7 @@ const CompanyManagement = () => {
             });
             const data = await res.json();
             if (data.length > 0) {
+                // Find the latest one that isn't deleted, or just take the first from the sorted list
                 const latest = data[0];
                 setCurrentRecord(latest);
                 setCompanyInfo({
@@ -54,16 +55,30 @@ const CompanyManagement = () => {
                 },
                 body: JSON.stringify({ ...companyInfo, submit }),
             });
+            const data = await res.json();
             if (res.ok) {
                 alert(submit ? "Profile submitted for approval." : "Draft saved successfully.");
                 fetchCompany();
+            } else {
+                alert(data.message || "Error saving data");
             }
         } catch (err) {
             console.error(err);
         }
     };
 
+    const getStatusColor = (status) => {
+        switch (status) {
+            case 'APPROVED': return '#2b8a3e'; // Green
+            case 'PENDING': return '#f08c00'; // Yellow
+            case 'REJECTED': return '#e03131'; // Red
+            default: return '#868e96'; // Gray (DRAFT)
+        }
+    };
+
     if (loading) return <div>Loading Profile Data...</div>;
+
+    const isPending = currentRecord?.status === 'PENDING';
 
     return (
         <div className="manager-page-content">
@@ -74,41 +89,85 @@ const CompanyManagement = () => {
                 </div>
                 {currentRecord && (
                     <div className="status-badge-container">
-                        <span style={{ fontSize: '0.75rem', fontWeight: 'bold', textTransform: 'uppercase', color: currentRecord.submissionStatus === 'Approved' ? '#2b8a3e' : currentRecord.submissionStatus === 'PendingApproval' ? '#f08c00' : '#1f1f1d' }}>
-                            Status: {currentRecord.submissionStatus}
+                        <span style={{
+                            fontSize: '0.85rem',
+                            fontWeight: 'bold',
+                            textTransform: 'uppercase',
+                            padding: '4px 12px',
+                            borderRadius: '4px',
+                            backgroundColor: getStatusColor(currentRecord.status) + '22',
+                            color: getStatusColor(currentRecord.status),
+                            border: `1px solid ${getStatusColor(currentRecord.status)}`
+                        }}>
+                            Status: {currentRecord.status || 'DRAFT'}
                         </span>
                     </div>
                 )}
             </header>
 
-            {currentRecord?.submissionStatus === 'Rejected' && (
-                <div style={{ backgroundColor: '#fff5f5', border: '1px solid #ffc9c9', padding: '16px', marginBottom: '24px', color: '#e03131', fontSize: '0.9rem' }}>
-                    <strong>Rejection Reason:</strong> {currentRecord.verificationMetadata?.rejectionReason}
+            {isPending && (
+                <div style={{ backgroundColor: '#fff9db', border: '1px solid #fab005', padding: '16px', marginBottom: '24px', color: '#856404', borderRadius: '8px', display: 'flex', alignItems: 'center', gap: '12px' }}>
+                    <span style={{ fontSize: '1.2rem' }}>🟡</span>
+                    <strong>Waiting for Admin Approval. Further edits are restricted during this period.</strong>
+                </div>
+            )}
+
+            {currentRecord?.status === 'REJECTED' && (
+                <div style={{ backgroundColor: '#fff5f5', border: '1px solid #ffc9c9', padding: '16px', marginBottom: '24px', color: '#e03131', fontSize: '0.9rem', borderRadius: '8px' }}>
+                    <strong>Needs Correction:</strong> Please review the details and resubmit.
                 </div>
             )}
 
             <form className="mgmt-form" onSubmit={(e) => { e.preventDefault(); handleSubmit(false); }}>
                 <div className="form-row">
                     <label>Company Name</label>
-                    <input name="name" value={companyInfo.name} onChange={handleChange} required />
+                    <input
+                        name="name"
+                        value={companyInfo.name}
+                        onChange={handleChange}
+                        required
+                        disabled={isPending}
+                    />
                 </div>
                 <div className="form-row">
                     <label>Core Narrative / Description</label>
-                    <textarea name="description" rows="5" value={companyInfo.description} onChange={handleChange} required />
+                    <textarea
+                        name="description"
+                        rows="5"
+                        value={companyInfo.description}
+                        onChange={handleChange}
+                        required
+                        disabled={isPending}
+                    />
                 </div>
                 <div className="form-row">
                     <label>Established Year</label>
-                    <input name="establishedYear" type="number" value={companyInfo.establishedYear} onChange={handleChange} required />
+                    <input
+                        name="establishedYear"
+                        type="number"
+                        value={companyInfo.establishedYear}
+                        onChange={handleChange}
+                        required
+                        disabled={isPending}
+                    />
                 </div>
                 <div className="form-row">
                     <label>Base Location</label>
-                    <input name="location" value={companyInfo.location} onChange={handleChange} required />
+                    <input
+                        name="location"
+                        value={companyInfo.location}
+                        onChange={handleChange}
+                        required
+                        disabled={isPending}
+                    />
                 </div>
 
-                <div className="form-actions">
-                    <button type="submit" className="btn-save">Update Draft</button>
-                    <button type="button" className="btn-secondary" onClick={() => handleSubmit(true)}>Finalize & Submit</button>
-                </div>
+                {!isPending && (
+                    <div className="form-actions">
+                        <button type="submit" className="btn-save">Save as Draft</button>
+                        <button type="button" className="btn-secondary" onClick={() => handleSubmit(true)}>Submit for Approval</button>
+                    </div>
+                )}
             </form>
         </div>
     );

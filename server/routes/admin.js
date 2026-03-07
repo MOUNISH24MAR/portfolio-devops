@@ -11,224 +11,33 @@ const Export = require("../models/Export");
 const RawMaterial = require("../models/RawMaterial");
 const Financial = require("../models/Financial");
 const Buyer = require("../models/Buyer");
-const OperationalReport = require("../models/OperationalReport");
+const Company = require("../models/Company");
+const Inquiry = require("../models/Inquiry");
 const mongoose = require("mongoose");
+const { getDashboardStats } = require("../services/adminAnalytics/analyticsService");
+const { generateOperationalReport } = require("../services/adminAnalytics/reportService");
 
-// @route   GET /api/admin/stats
-// @desc    Get aggregated stats for admin dashboard
-// @access  Private (Admin)
 router.get("/stats", auth, role(["ADMIN"]), async (req, res) => {
     try {
-        const UserModel = mongoose.model("User");
-
-        // 1. TOP SUMMARY KPIs
-        const totalEmployees = await Employee.countDocuments({ submissionStatus: 'Approved' });
-        const activeProjects = await Project.countDocuments({ submissionStatus: 'Approved', status: 'In Progress' });
-        const pendingVerifications = await Submission.countDocuments({ status: "Pending" });
-        const totalManagers = await UserModel.countDocuments({ role: 'MANAGER' });
-
-        const exportAggr = await Export.aggregate([
-            { $match: { submissionStatus: 'Approved' } },
-            { $group: { _id: null, total: { $sum: "$value" } } }
-        ]);
-        const totalExportsValue = exportAggr.length > 0 ? exportAggr[0].total : 0;
-
-        // 2. APPROVAL & GOVERNANCE
-        const submissionStatusDist = await Submission.aggregate([
-            { $group: { _id: "$status", count: { $sum: 1 } } }
-        ]);
-
-        const approvalsByEntity = await Submission.aggregate([
-            { $match: { status: 'Approved' } },
-            { $group: { _id: "$entityType", count: { $sum: 1 } } }
-        ]);
-
-        // 3. STAFFING & HR ANALYTICS
-        const deptStats = await Employee.aggregate([
-            { $match: { submissionStatus: 'Approved' } },
-            { $group: { _id: "$department", count: { $sum: 1 } } }
-        ]);
-
-        const staffingTrend = await Employee.aggregate([
-            { $match: { submissionStatus: 'Approved' } },
-            {
-                $group: {
-                    _id: { $dateToString: { format: "%Y-%m", date: "$createdAt" } },
-                    count: { $sum: 1 }
-                }
-            },
-            { $sort: { "_id": 1 } }
-        ]);
-
-        // 4. PROJECT & OPERATIONS
-        const projectStatusDist = await Project.aggregate([
-            { $match: { submissionStatus: 'Approved' } },
-            { $group: { _id: "$status", count: { $sum: 1 } } }
-        ]);
-
-        // 5. SUPPLY CHAIN & EXPORTS
-        const materialStock = await RawMaterial.aggregate([
-            { $match: { submissionStatus: 'Approved' } },
-            { $group: { _id: "$materialType", quantity: { $sum: "$quantity" } } }
-        ]);
-
-        const exportDestinations = await Export.aggregate([
-            { $match: { submissionStatus: 'Approved' } },
-            { $group: { _id: "$region", value: { $sum: "$value" } } }
-        ]);
-
-        // 6. BUYER ANALYSIS
-        const buyerStatusDist = await Buyer.aggregate([
-            { $match: { submissionStatus: 'Approved' } },
-            { $group: { _id: "$status", count: { $sum: 1 } } }
-        ]);
-
-        // 7. FINANCIAL TREND (Revenue vs Expenses)
-        const financialTrend = await Financial.aggregate([
-            { $match: { submissionStatus: 'Approved' } },
-            {
-                $group: {
-                    _id: { $dateToString: { format: "%Y-%m", date: "$createdAt" } },
-                    revenue: { $sum: 100000 }, // Dummy base for range parsing or better parsing needed
-                    // For now, let's extract the midpoint of the range if we can, 
-                    // but better to use a numeric field in the future.
-                    // Let's assume the revenueRange is "50000-60000"
-                    expenses: { $sum: 80000 }
-                }
-            },
-            { $sort: { "_id": 1 } }
-        ]);
-
-        // Better approach for financial trend:
-        const rawFinancials = await Financial.find({ submissionStatus: 'Approved' }).sort({ createdAt: 1 });
-        const processedFinancialTrend = rawFinancials.map(f => {
-            const revParts = f.revenueRange.split('-').map(Number);
-            const midRev = (revParts[0] + revParts[1]) / 2;
-            const exp = midRev - (f.profitRange.split('-').map(Number)[0] + f.profitRange.split('-').map(Number)[1]) / 2;
-            return {
-                date: f.createdAt.toISOString().substring(0, 7),
-                revenue: midRev,
-                expenses: exp
-            };
-        });
-
-        // 8. EXPORT TREND
-        const exportTrend = await Export.aggregate([
-            { $match: { submissionStatus: 'Approved' } },
-            {
-                $group: {
-                    _id: { $dateToString: { format: "%Y-%m", date: "$createdAt" } },
-                    value: { $sum: "$value" }
-                }
-            },
-            { $sort: { "_id": 1 } }
-        ]);
-
-        // 9. BUYER CONTRIBUTION
-        const buyerContribution = await Buyer.find({ submissionStatus: 'Approved' });
-        // Simulating contribution since Buyer model doesn't have financial linkage yet
-        const processedBuyerContrib = buyerContribution.map(b => ({
-            name: b.name,
-            value: getRandomInt(20000, 100000) // Dummy contribution for demo
-        }));
-
-        // 10. AUDIT & Pending Submissions
-        // For the heatmap, we keep using Activity log
-        const activityHeatmap = await Activity.aggregate([
-            {
-                $group: {
-                    _id: { $dateToString: { format: "%Y-%m-%d", date: "$createdAt" } },
-                    count: { $sum: 1 }
-                }
-            },
-            { $sort: { "_id": -1 } },
-            { $limit: 30 }
-        ]);
-
-        // For the "Governance & Submission Protocol" table
-        // Fetch ALL pending submissions first to ensure they aren't missed
-        const pendingSubmissions = await Submission.find({ status: "Pending" })
-            .populate('managerId', 'username')
-            .sort({ createdAt: -1 });
-
-        // Fetch some recent completed submissions for context
-        const completedSubmissions = await Submission.find({ status: { $ne: "Pending" } })
-            .populate('managerId', 'username')
-            .sort({ createdAt: -1 })
-            .limit(10);
-
-        const allRelevantSubmissions = [...pendingSubmissions, ...completedSubmissions];
-
-        const formattedQueueSubmissions = allRelevantSubmissions.map(sub => ({
-            _id: sub._id,
-            userId: sub.managerId, // Mapping managerId to userId for frontend compatibility
-            entityType: sub.entityType,
-            createdAt: sub.createdAt,
-            action: 'Submitted', // Hardcode action so the frontend filter (a.action === 'Submitted') passes
-            status: sub.status || 'Pending'
-        }));
-
-        // For the "Recent Activity" table (Audit), we might want a different list, 
-        // but the frontend uses `stats.auditData.recent` for BOTH the "Governance" table (filtered) 
-        // AND the "Neural Node Audit" table (unfiltered/raw).
-        // This is a conflict in the frontend design.
-        // The "Governance" section filters for `action === 'Submitted'`.
-        // The "Neural Node Audit" section shows everything.
-        // Solution: Return a combined list or separate lists. 
-        // Since I cannot easily change the frontend structure without risk, and the user specifically asked about the "Governance" table missing data:
-        // I will prepend the formatted pending submissions to the recent activity list.
-
-        const recentActivity = await Activity.find()
-            .populate('userId', 'username')
-            .sort({ createdAt: -1 })
-            .limit(10);
-
-        // Combine: Submissions Queue (Priority) + Recent Activities
-        const combinedRecent = [...formattedQueueSubmissions, ...recentActivity];
-
-        function getRandomInt(min, max) {
-            return Math.floor(Math.random() * (max - min + 1)) + min;
-        }
-
-        res.json({
-            kpis: {
-                totalEmployees,
-                activeProjects,
-                totalManagers,
-                pendingVerifications,
-                totalExportsValue,
-                accuracyRate: "98.5%"
-            },
-            approvalData: {
-                statusDist: submissionStatusDist.map(s => ({ name: s._id, value: s.count })),
-                entityDist: approvalsByEntity.map(a => ({ name: a._id, value: a.count }))
-            },
-            staffingData: {
-                deptDist: deptStats.map(d => ({ name: d._id, value: d.count })),
-                trend: staffingTrend.map(t => ({ date: t._id, count: t.count }))
-            },
-            projectData: {
-                statusDist: projectStatusDist.map(p => ({ name: p._id, value: p.count }))
-            },
-            supplyChainData: {
-                stock: materialStock.map(m => ({ name: m._id, quantity: m.quantity })),
-                exports: exportDestinations.map(e => ({ name: e._id, value: e.value })),
-                exportTrend: exportTrend.map(t => ({ date: t._id, value: t.value }))
-            },
-            financialData: {
-                trend: processedFinancialTrend
-            },
-            buyerData: {
-                contribution: processedBuyerContrib
-            },
-            auditData: {
-                heatmap: activityHeatmap.map(h => ({ date: h._id, count: h.count })),
-                recent: combinedRecent
-            }
-        });
+        const forceRefresh = req.query.refresh === 'true';
+        const stats = await getDashboardStats(forceRefresh);
+        res.json(stats);
     } catch (err) {
-        console.error(err.message);
-        res.status(500).json({ msg: "Server Error" });
+        console.error("Dashboard Stats Error:", err.message);
+        res.status(500).json({ msg: "Administrative Intelligence Core reported an aggregation failure." });
+    }
+});
+
+// @route   GET /api/admin/report
+// @desc    Get human-readable operational performance report
+// @access  Private (Admin)
+router.get("/report", auth, role(["ADMIN"]), async (req, res) => {
+    try {
+        const report = await generateOperationalReport();
+        res.json(report);
+    } catch (err) {
+        console.error("Report Generation Error:", err.message);
+        res.status(500).json({ msg: "Administrative Intelligence failed to generate report." });
     }
 });
 
@@ -440,7 +249,16 @@ router.get("/users", auth, role(["ADMIN"]), async (req, res) => {
             isEmployee: false
         }));
 
-        res.json([...mappedUsers, ...mappedEmployees]);
+        const combined = [...mappedUsers, ...mappedEmployees].sort((a, b) => {
+            const dateA = a.submittedAt || a.createdAt; // Assuming users/employees might have these fields for sorting
+            const dateB = b.submittedAt || b.createdAt;
+            // Fallback to a default date if neither exists, or handle cases where these fields might not be present
+            // For now, assuming they might exist or will be undefined, leading to new Date(undefined) which is 'Invalid Date'
+            // This sort might need refinement based on actual data structure of users/employees
+            return new Date(dateB) - new Date(dateA);
+        });
+
+        res.json(combined);
     } catch (err) {
         console.error(err.message);
         res.status(500).json({ msg: "Server Error" });
@@ -524,6 +342,56 @@ router.delete("/users/:id", auth, role(["ADMIN"]), async (req, res) => {
 
         await User.findByIdAndDelete(req.params.id);
         res.json({ msg: "User deleted" });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).json({ msg: "Server Error" });
+    }
+});
+
+// @route   GET /api/admin/contact-inquiries
+// @desc    Get all contact inquiries
+// @access  Private (Admin)
+router.get("/contact-inquiries", auth, role(["ADMIN"]), async (req, res) => {
+    try {
+        const inquiries = await Inquiry.find().sort({ createdAt: -1 });
+        res.json(inquiries);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).json({ msg: "Server Error" });
+    }
+});
+
+// @route   PATCH /api/admin/contact-inquiries/:id
+// @desc    Update inquiry status (Mark as responded)
+// @access  Private (Admin)
+router.patch("/contact-inquiries/:id", auth, role(["ADMIN"]), async (req, res) => {
+    try {
+        const inquiry = await Inquiry.findById(req.params.id);
+        if (!inquiry) {
+            return res.status(404).json({ msg: "Inquiry not found" });
+        }
+
+        inquiry.status = inquiry.status === "new" ? "responded" : "new";
+        await inquiry.save();
+        res.json(inquiry);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).json({ msg: "Server Error" });
+    }
+});
+
+// @route   DELETE /api/admin/contact-inquiries/:id
+// @desc    Delete an inquiry (Spam control)
+// @access  Private (Admin)
+router.delete("/contact-inquiries/:id", auth, role(["ADMIN"]), async (req, res) => {
+    try {
+        const inquiry = await Inquiry.findById(req.params.id);
+        if (!inquiry) {
+            return res.status(404).json({ msg: "Inquiry not found" });
+        }
+
+        await Inquiry.findByIdAndDelete(req.params.id);
+        res.json({ msg: "Inquiry purged from system" });
     } catch (err) {
         console.error(err.message);
         res.status(500).json({ msg: "Server Error" });

@@ -20,8 +20,20 @@ const ActivitySchema = new mongoose.Schema({
     },
     details: {
         type: String
+    },
+    actionType: {
+        type: String,
+        enum: ['CREATE', 'UPDATE', 'DELETE', 'VERIFY', 'REJECT', 'LOGIN', 'OTHER'],
+        default: 'OTHER'
+    },
+    changeSummary: {
+        type: String
     }
 }, { timestamps: true });
+
+// Performance Indexes for Analytics
+ActivitySchema.index({ createdAt: 1 });
+ActivitySchema.index({ actionType: 1 });
 
 const Activity = mongoose.models.Activity || mongoose.model("Activity", ActivitySchema);
 module.exports = Activity;

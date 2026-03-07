@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useCompany } from "../context/CompanyContext";
 import "./auth_css/Login.css";
 
-const Login = ({ companyName, portalName }) => {
+const Login = ({ portalName }) => {
+  const { company } = useCompany();
   const [formData, setFormData] = useState({ username: "", password: "" });
   const [error, setError] = useState("");
   const navigate = useNavigate();
@@ -51,7 +53,7 @@ const Login = ({ companyName, portalName }) => {
     <div className="login-page">
       <div className="login-card">
         <header className="login-header">
-          <h1>{companyName || "V R fashions"}</h1>
+          <h1>{company?.name || "V R fashions"}</h1>
           <p>{portalName || "Internal Operations Portal"}</p>
         </header>
 
