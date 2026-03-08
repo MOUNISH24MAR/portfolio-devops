@@ -23,10 +23,16 @@ const AdminProducts = () => {
     const [searchTerm, setSearchTerm] = useState("");
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [filter, setFilter] = useState("all");
+    const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
         fetchProducts();
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
     }, []);
+
+    const checkMobile = () => setIsMobile(window.innerWidth < 1024);
 
     const fetchProducts = async () => {
         try {
@@ -84,23 +90,34 @@ const AdminProducts = () => {
     return (
         <div className="admin-content-wrapper">
             {/* HEADER */}
-            <header className="dashboard-control-bar">
+            <header className="dashboard-control-bar" style={{ 
+                flexDirection: isMobile ? 'column' : 'row', 
+                alignItems: isMobile ? 'flex-start' : 'flex-end',
+                gap: '24px'
+            }}>
                 <div className="control-info">
-                    <h1>Product Governance</h1>
+                    <h1 style={{ fontSize: isMobile ? '2rem' : '3.5rem' }}>Product Governance</h1>
                     <p>Global collection status: <span style={{ color: 'var(--admin-success)' }}>Operational</span></p>
                 </div>
-                <div className="control-actions">
-                    <div style={{ display: 'flex', alignItems: 'center', background: 'var(--admin-card-bg)', padding: '8px 16px', border: '1px solid var(--admin-border)' }}>
+                <div className="control-actions" style={{ flexDirection: isMobile ? 'column' : 'row', width: isMobile ? '100%' : 'auto' }}>
+                    <div style={{ 
+                        display: 'flex', 
+                        alignItems: 'center', 
+                        background: 'var(--admin-card-bg)', 
+                        padding: '10px 16px', 
+                        border: '1px solid var(--admin-border)',
+                        width: '100%'
+                    }}>
                         <Search size={16} color="var(--admin-text-secondary)" />
                         <input
                             type="text"
                             placeholder="Search catalogue..."
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
-                            style={{ background: 'none', border: 'none', padding: '4px 8px', color: 'var(--admin-text-primary)', outline: 'none', fontSize: '0.8rem' }}
+                            style={{ background: 'none', border: 'none', padding: '4px 8px', color: 'var(--admin-text-primary)', outline: 'none', fontSize: '0.9rem', width: '100%' }}
                         />
                     </div>
-                    <a href="/products" target="_blank" className="sync-btn" style={{ textDecoration: 'none', textAlign: 'center' }}>
+                    <a href="/products" target="_blank" className="sync-btn" style={{ textDecoration: 'none', textAlign: 'center', width: isMobile ? '100%' : 'auto', justifyContent: 'center' }}>
                         Live Portfolio
                     </a>
                 </div>
@@ -126,7 +143,7 @@ const AdminProducts = () => {
             </div>
 
             {/* MAIN CONTENT AREA */}
-            <div className="charts-grid" style={{ gridTemplateColumns: selectedProduct && window.innerWidth > 1024 ? '1.5fr 1fr' : '1fr' }}>
+            <div className="charts-grid" style={{ gridTemplateColumns: selectedProduct && !isMobile ? '1.5fr 1fr' : '1fr' }}>
                 <div className="chart-card">
                     <div className="card-actions">
                         <div style={{ display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap' }}>
@@ -235,31 +252,7 @@ const AdminProducts = () => {
                 )}
             </div>
 
-            {/* AI INSIGHTS PANEL */}
-            <section className="dashboard-section" style={{ marginTop: '40px' }}>
-                <div className="insights-panel">
-                    <div className="insights-badge">
-                        <Cpu size={14} style={{ marginRight: '8px' }} />
-                        INTELLIGENCE v2.4
-                    </div>
-                    <h2>Catalogue Distribution Analysis</h2>
-                    <p>
-                        The collection currently features <strong>{stats.total} unique designs</strong>. 
-                        The primary category vector is <strong>"Knitted Garments"</strong> comprising {((products.filter(p => p.category === 'Knitted Garments').length / products.length) * 100).toFixed(0)}% of the inventory. 
-                        Recommendation: Expand the <strong>"Sportswear"</strong> collection to meet seasonal demand shifts identified in Q2 targets.
-                    </p>
-                    <div className="insight-stats-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '20px', marginTop: '24px' }}>
-                        <div className="insight-stat">
-                            <span>Collection Integrity</span>
-                            <strong style={{ color: 'var(--admin-success)' }}>High</strong>
-                        </div>
-                        <div className="insight-stat">
-                            <span>Audit Latency</span>
-                            <strong>{stats.pending > 0 ? 'Protocol Required' : 'Optimal'}</strong>
-                        </div>
-                    </div>
-                </div>
-            </section>
+
         </div>
     );
 };

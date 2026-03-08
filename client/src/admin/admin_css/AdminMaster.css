@@ -913,4 +913,146 @@
     .report-narrative-card {
         padding: 20px;
     }
-}
+}
+
+/* -------------------------------------------------------------------------- */
+/* 8. Utility Components for UX Consistency                                   */
+/* -------------------------------------------------------------------------- */
+
+/* Status Badges */
+.status-badge {
+    padding: 4px 8px;
+    font-size: 0.65rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-radius: 2px;
+}
+.status-new, .status-pendingapproval { background: #fff9db; color: #f08c00; border: 1px solid #ffe066; }
+.status-responded, .status-approved { background: #ebfbee; color: #2b8a3e; border: 1px solid #b2f2bb; }
+.status-rejected, .status-deleted { background: #fff5f5; color: #c92a2a; border: 1px solid #ffc9c9; }
+
+/* Detail View Layout */
+.inquiry-detail-view {
+    padding-top: 20px;
+}
+.detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--admin-border);
+}
+.detail-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    color: var(--admin-text-secondary);
+}
+.detail-timestamp {
+    font-size: 0.75rem;
+    color: #999;
+}
+.detail-subject h4 {
+    font-size: 1.25rem;
+    font-family: var(--admin-header-font);
+    margin-bottom: 16px;
+}
+.detail-message p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: #444;
+    white-space: pre-wrap;
+}
+.detail-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+/* Mobile-Specific Overrides for Tables */
+@media (max-width: 768px) {
+    .charts-grid {
+        grid-template-columns: 1fr !important;
+    }
+    .detail-panel-overlay {
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        z-index: 2500;
+        overflow-y: auto;
+        border-left: none !important;
+        background: #fff;
+    }
+    .admin-table-container {
+        border: none;
+        margin: 0 -16px;
+        width: calc(100% + 32px);
+    }
+    .admin-table td, .admin-table th {
+        padding: 12px;
+    }
+    .filter-group-mini {
+        width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+        padding-bottom: 8px;
+    }
+}
+
+.selected-row {
+    background: #f8f9fa;
+    border-left: 3px solid var(--admin-accent);
+}
+
+.text-truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.view-btn {
+    padding: 6px 12px;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background: transparent;
+    border: 1px solid var(--admin-border);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.view-btn:hover {
+    background: var(--admin-accent);
+    color: #fff;
+    border-color: var(--admin-accent);
+}
+
+/* Filter Mini Group */
+.filter-group-mini {
+    display: flex;
+    gap: 8px;
+}
+.filter-group-mini button {
+    background: none;
+    border: 1px solid var(--admin-border);
+    padding: 4px 12px;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.filter-group-mini button.active {
+    background: var(--admin-accent);
+    color: #fff;
+    border-color: var(--admin-accent);
+}
+

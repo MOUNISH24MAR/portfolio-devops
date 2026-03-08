@@ -16,6 +16,7 @@ const Inquiry = require("../models/Inquiry");
 const mongoose = require("mongoose");
 const { getDashboardStats } = require("../services/adminAnalytics/analyticsService");
 const { generateOperationalReport } = require("../services/adminAnalytics/reportService");
+const { extractMLDatasets } = require("../services/ml/dataExtractionService");
 
 router.get("/stats", auth, role(["ADMIN"]), async (req, res) => {
     try {
@@ -395,6 +396,22 @@ router.delete("/contact-inquiries/:id", auth, role(["ADMIN"]), async (req, res) 
     } catch (err) {
         console.error(err.message);
         res.status(500).json({ msg: "Server Error" });
+    }
+});
+
+// @route   GET /api/admin/ml/export-dataset
+// @desc    Trigger data extraction for ML training
+// @access  Private (Admin)
+router.get("/ml/export-dataset", auth, role(["ADMIN"]), async (req, res) => {
+    try {
+        const results = await extractMLDatasets();
+        res.json({
+            msg: "Data extraction successful. Datasets synchronized for ML processing.",
+            results
+        });
+    } catch (err) {
+        console.error("ML Data Extraction Error:", err.message);
+        res.status(500).json({ msg: "Administrative Intelligence failed to extract datasets." });
     }
 });
 

@@ -1,0 +1,101 @@
+shipment_date,exporter_name,product_description,quantity,value,destination_country,year,month,quarter,demand_level
+2024-09-30 18:30:00+00:00,vr fashions,knitted wear,13414,147554,japan,2024,9,3,High
+2025-01-31 18:30:00+00:00,vr fashions,knitted wear,14727,176724,japan,2025,1,1,High
+2025-08-31 18:30:00+00:00,vr fashions,knitted wear,4853,53383,japan,2025,8,3,Low
+2025-11-30 18:30:00+00:00,vr fashions,knitted wear,12282,110538,japan,2025,11,4,High
+2025-12-31 18:30:00+00:00,vr fashions,knitted wear,14314,114512,japan,2025,12,4,High
+2025-08-02 18:30:00+00:00,vr fashions,sportswear,9544,124072,south korea,2025,8,3,Medium
+2024-11-30 18:30:00+00:00,vr fashions,outerwear,16008,176088,south korea,2024,11,4,High
+2026-09-05 18:30:00+00:00,vr fashions,nightwear,7534,82874,south korea,2026,9,3,Medium
+2024-04-18 18:30:00+00:00,vr fashions,knitted wear,10954,109540,japan,2024,4,2,Medium
+2026-07-24 18:30:00+00:00,vr fashions,nightwear,5329,53290,japan,2026,7,3,Low
+2026-03-08 18:30:00+00:00,vr fashions,sportswear,7255,50785,japan,2026,3,1,Medium
+2026-11-06 18:30:00+00:00,vr fashions,knitted wear,21505,150535,japan,2026,11,4,High
+2024-07-21 18:30:00+00:00,vr fashions,knitted wear,15026,180312,japan,2024,7,3,High
+2025-02-03 18:30:00+00:00,vr fashions,knitted wear,12319,147828,japan,2025,2,1,High
+2024-01-31 18:30:00+00:00,vr fashions,sportswear,14412,187356,japan,2024,1,1,High
+2025-11-16 18:30:00+00:00,vr fashions,outerwear,6123,85722,japan,2025,11,4,Low
+2025-05-21 18:30:00+00:00,vr fashions,knitted wear,9964,119568,south korea,2025,5,2,Medium
+2026-11-21 18:30:00+00:00,vr fashions,nightwear,19051,171459,south korea,2026,11,4,High
+2025-05-10 18:30:00+00:00,vr fashions,sportswear,12914,116226,japan,2025,5,2,High
+2024-10-31 18:30:00+00:00,vr fashions,knitted wear,13624,108992,france,2024,10,4,High
+2024-11-30 18:30:00+00:00,vr fashions,knitted wear,13031,130310,france,2024,11,4,High
+2024-12-31 18:30:00+00:00,vr fashions,knitted wear,7503,82533,france,2024,12,4,Medium
+2025-04-30 18:30:00+00:00,vr fashions,knitted wear,7555,60440,france,2025,4,2,Medium
+2025-05-31 18:30:00+00:00,vr fashions,knitted wear,13281,119529,france,2025,5,2,High
+2025-06-30 18:30:00+00:00,vr fashions,knitted wear,10977,131724,france,2025,6,2,Medium
+2025-09-30 18:30:00+00:00,vr fashions,knitted wear,10192,91728,france,2025,9,3,Medium
+2025-06-04 18:30:00+00:00,vr fashions,outerwear,15738,125904,france,2025,6,2,High
+2024-12-04 18:30:00+00:00,vr fashions,knitted wear,11229,78603,france,2024,12,4,Medium
+2025-09-26 18:30:00+00:00,vr fashions,nightwear,11402,159628,france,2025,9,3,Medium
+2026-03-10 18:30:00+00:00,vr fashions,knitted wear,9640,86760,france,2026,3,1,Medium
+2026-12-10 18:30:00+00:00,vr fashions,knitted wear,22232,222320,france,2026,12,4,High
+2026-11-04 18:30:00+00:00,vr fashions,sportswear,11151,156114,france,2026,11,4,Medium
+2024-05-22 18:30:00+00:00,vr fashions,outerwear,4931,34517,france,2024,5,2,Low
+2025-01-01 18:30:00+00:00,vr fashions,nightwear,17659,194249,france,2025,1,1,High
+2026-10-02 18:30:00+00:00,vr fashions,nightwear,16822,168220,france,2026,10,4,High
+2026-07-02 18:30:00+00:00,vr fashions,knitted wear,13769,123921,france,2026,7,3,High
+2025-09-23 18:30:00+00:00,vr fashions,sportswear,8387,117418,france,2025,9,3,Medium
+2026-09-09 18:30:00+00:00,vr fashions,sportswear,14274,199836,france,2026,9,3,High
+2026-11-09 18:30:00+00:00,vr fashions,nightwear,7200,57600,france,2026,11,4,Medium
+2026-08-10 18:30:00+00:00,vr fashions,knitted wear,5842,40894,france,2026,8,3,Low
+2026-02-06 18:30:00+00:00,vr fashions,outerwear,13230,171990,france,2026,2,1,High
+2024-01-10 18:30:00+00:00,vr fashions,knitted wear,12189,146268,france,2024,1,1,High
+2026-02-17 18:30:00+00:00,vr fashions,sportswear,6702,46914,france,2026,2,1,Low
+2024-12-26 18:30:00+00:00,vr fashions,outerwear,20932,230252,france,2024,12,4,High
+2025-03-09 18:30:00+00:00,vr fashions,sportswear,8451,109863,france,2025,3,1,Medium
+2024-03-20 18:30:00+00:00,vr fashions,nightwear,9798,107778,france,2024,3,1,Medium
+2026-02-07 18:30:00+00:00,vr fashions,knitted wear,18234,145872,france,2026,2,1,High
+2024-04-01 18:30:00+00:00,vr fashions,sportswear,10661,138593,france,2024,4,2,Medium
+2025-01-20 18:30:00+00:00,vr fashions,sportswear,6079,72948,france,2025,1,1,Low
+2025-02-03 18:30:00+00:00,vr fashions,outerwear,6333,63330,uae,2025,2,1,Low
+2025-01-25 18:30:00+00:00,vr fashions,knitted wear,11140,155960,uae,2025,1,1,Medium
+2026-06-26 18:30:00+00:00,vr fashions,sportswear,13677,95739,qatar,2026,6,2,High
+2026-10-02 18:30:00+00:00,vr fashions,sportswear,19894,139258,uae,2026,10,4,High
+2026-12-18 18:30:00+00:00,vr fashions,sportswear,7112,71120,qatar,2026,12,4,Medium
+2026-03-12 18:30:00+00:00,vr fashions,knitted wear,17186,189046,qatar,2026,3,1,High
+2026-08-21 18:30:00+00:00,vr fashions,nightwear,16037,192444,uae,2026,8,3,High
+2026-11-10 18:30:00+00:00,vr fashions,outerwear,10500,84000,qatar,2026,11,4,Medium
+2026-08-13 18:30:00+00:00,vr fashions,outerwear,10154,132002,uae,2026,8,3,Medium
+2024-02-17 18:30:00+00:00,vr fashions,nightwear,17196,154764,uae,2024,2,1,High
+2025-09-10 18:30:00+00:00,vr fashions,sportswear,11364,113640,uae,2025,9,3,Medium
+2024-06-04 18:30:00+00:00,vr fashions,nightwear,5765,63415,uae,2024,6,2,Low
+2024-05-03 18:30:00+00:00,vr fashions,nightwear,4897,44073,uae,2024,5,2,Low
+2025-05-01 18:30:00+00:00,vr fashions,sportswear,9474,123162,uae,2025,5,2,Medium
+2025-07-25 18:30:00+00:00,vr fashions,nightwear,3654,29232,qatar,2025,7,3,Low
+2024-02-18 18:30:00+00:00,vr fashions,nightwear,5048,40384,uae,2024,2,1,Low
+2024-07-09 18:30:00+00:00,vr fashions,outerwear,13607,136070,uae,2024,7,3,High
+2026-01-01 18:30:00+00:00,vr fashions,outerwear,13641,177333,qatar,2026,1,1,High
+2025-01-14 18:30:00+00:00,vr fashions,nightwear,19282,134974,uae,2025,1,1,High
+2025-02-18 18:30:00+00:00,vr fashions,knitted wear,4918,59016,uae,2025,2,1,Low
+2024-11-01 18:30:00+00:00,vr fashions,outerwear,13958,181454,qatar,2024,11,4,High
+2025-02-28 18:30:00+00:00,vr fashions,knitted wear,15050,135450,usa,2025,2,1,High
+2025-03-31 18:30:00+00:00,vr fashions,knitted wear,11971,143652,usa,2025,3,1,Medium
+2025-07-31 18:30:00+00:00,vr fashions,knitted wear,8819,79371,usa,2025,7,3,Medium
+2025-10-31 18:30:00+00:00,vr fashions,knitted wear,20578,164624,usa,2025,10,4,High
+2026-10-27 18:30:00+00:00,vr fashions,outerwear,21250,191250,usa,2026,10,4,High
+2025-01-16 18:30:00+00:00,vr fashions,nightwear,16473,148257,usa,2025,1,1,High
+2025-07-14 18:30:00+00:00,vr fashions,nightwear,9675,135450,usa,2025,7,3,Medium
+2026-07-27 18:30:00+00:00,vr fashions,knitted wear,10918,87344,usa,2026,7,3,Medium
+2024-11-04 18:30:00+00:00,vr fashions,knitted wear,17469,139752,usa,2024,11,4,High
+2025-09-24 18:30:00+00:00,vr fashions,sportswear,6207,74484,usa,2025,9,3,Low
+2025-10-31 18:30:00+00:00,vr fashions,outerwear,15086,165946,usa,2025,10,4,High
+2026-03-15 18:30:00+00:00,vr fashions,sportswear,7471,52297,usa,2026,3,1,Medium
+2025-02-21 18:30:00+00:00,vr fashions,knitted wear,20122,221342,usa,2025,2,1,High
+2026-05-17 18:30:00+00:00,vr fashions,knitted wear,9698,96980,usa,2026,5,2,Medium
+2025-09-08 18:30:00+00:00,vr fashions,knitted wear,15692,109844,usa,2025,9,3,High
+2025-05-06 18:30:00+00:00,vr fashions,nightwear,15295,152950,new zealand,2025,5,2,High
+2025-01-31 18:30:00+00:00,vr fashions,knitted wear,21151,274963,new zealand,2025,1,1,High
+2024-02-19 18:30:00+00:00,vr fashions,outerwear,18540,185400,new zealand,2024,2,1,High
+2024-11-11 18:30:00+00:00,vr fashions,outerwear,7424,59392,new zealand,2024,11,4,Medium
+2025-10-05 18:30:00+00:00,vr fashions,outerwear,11848,106632,new zealand,2025,10,4,Medium
+2025-04-21 18:30:00+00:00,vr fashions,knitted wear,6914,69140,new zealand,2025,4,2,Low
+2024-05-07 18:30:00+00:00,vr fashions,nightwear,11061,77427,new zealand,2024,5,2,Medium
+2025-08-16 18:30:00+00:00,vr fashions,sportswear,12289,147468,new zealand,2025,8,3,High
+2024-04-09 18:30:00+00:00,vr fashions,knitted wear,9903,99030,new zealand,2024,4,2,Medium
+2024-11-07 18:30:00+00:00,vr fashions,knitted wear,20448,265824,new zealand,2024,11,4,High
+2026-01-24 18:30:00+00:00,vr fashions,outerwear,8912,98032,new zealand,2026,1,1,Medium
+2025-12-16 18:30:00+00:00,vr fashions,knitted wear,23398,187184,new zealand,2025,12,4,High
+2024-10-25 18:30:00+00:00,vr fashions,outerwear,7694,92328,new zealand,2024,10,4,Medium
+2024-08-10 18:30:00+00:00,vr fashions,nightwear,7747,108458,new zealand,2024,8,3,Medium
+2026-07-19 18:30:00+00:00,vr fashions,knitted wear,14918,193934,new zealand,2026,7,3,High

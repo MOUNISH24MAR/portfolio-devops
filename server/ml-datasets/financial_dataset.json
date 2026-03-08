@@ -1,0 +1,712 @@
+[
+  {
+    "revenue": 166575,
+    "expenses": 133260,
+    "profit": 33315,
+    "growthIndicator": -2,
+    "costCategories": [
+      {
+        "name": "Production",
+        "amount": 79956,
+        "_id": "69aafe3144f22127b8427ff6"
+      },
+      {
+        "name": "Admin",
+        "amount": 53304,
+        "_id": "69aafe3144f22127b8427ff7"
+      }
+    ],
+    "year": 2024
+  },
+  {
+    "revenue": 118628,
+    "expenses": 124559,
+    "profit": -5931,
+    "growthIndicator": 2,
+    "costCategories": [
+      {
+        "name": "Production",
+        "amount": 74735,
+        "_id": "69aafe3144f22127b8427ffc"
+      },
+      {
+        "name": "Admin",
+        "amount": 49823,
+        "_id": "69aafe3144f22127b8427ffd"
+      }
+    ],
+    "year": 2024
+  },
+  {
+    "revenue": 141287,
+    "expenses": 113029,
+    "profit": 28258,
+    "growthIndicator": 7,
+    "costCategories": [
+      {
+        "name": "Production",
+        "amount": 67817,
+        "_id": "69aafe3144f22127b8428003"
+      },
+      {
+        "name": "Admin",
+        "amount": 45211,
+        "_id": "69aafe3144f22127b8428004"
+      }
+    ],
+    "year": 2024
+  },
+  {
+    "revenue": 101210,
+    "expenses": 80968,
+    "profit": 20242,
+    "growthIndicator": -1,
+    "costCategories": [
+      {
+        "name": "Production",
+        "amount": 48580,
+        "_id": "69aafe3144f22127b8428009"
+      },
+      {
+        "name": "Admin",
+        "amount": 32387,
+        "_id": "69aafe3144f22127b842800a"
+      }
+    ],
+    "year": 2025
+  },
+  {
+    "revenue": 186767,
+    "expenses": 149413,
+    "profit": 37354,
+    "growthIndicator": 2,
+    "costCategories": [
+      {
+        "name": "Production",
+        "amount": 89647,
+        "_id": "69aafe3144f22127b8428010"
+      },
+      {
+        "name": "Admin",
+        "amount": 59765,
+        "_id": "69aafe3144f22127b8428011"
+      }
+    ],
+    "year": 2025
+  },
+  {
+    "revenue": 151315,
+    "expenses": 121052,
+    "profit": 30263,
+    "growthIndicator": 0,
+    "costCategories": [
+      {
+        "name": "Production",
+        "amount": 72631,
+        "_id": "69aafe3144f22127b8428016"
+      },
+      {
+        "name": "Admin",
+        "amount": 48420,
+        "_id": "69aafe3144f22127b8428017"
+      }
+    ],
+    "year": 2025
+  },
+  {
+    "revenue": 150765,
+    "expenses": 120612,
+    "profit": 30153,
+    "growthIndicator": 11,
+    "costCategories": [
+      {
+        "name": "Production",
+        "amount": 72367,
+        "_id": "69aafe3144f22127b842801c"
+      },
+      {
+        "name": "Admin",
+        "amount": 48244,
+        "_id": "69aafe3144f22127b842801d"
+      }
+    ],
+    "year": 2025
+  },
+  {
+    "revenue": 79086,
+    "expenses": 63268,
+    "profit": 15818,
+    "growthIndicator": 0,
+    "costCategories": [
+      {
+        "name": "Production",
+        "amount": 37960,
+        "_id": "69aafe3144f22127b8428023"
+      },
+      {
+        "name": "Admin",
+        "amount": 25307,
+        "_id": "69aafe3144f22127b8428024"
+      }
+    ],
+    "year": 2025
+  },
+  {
+    "revenue": 138743,
+    "expenses": 145680,
+    "profit": -6937,
+    "growthIndicator": 8,
+    "costCategories": [
+      {
+        "name": "Production",
+        "amount": 87408,
+        "_id": "69aafe3144f22127b8428029"
+      },
+      {
+        "name": "Admin",
+        "amount": 58272,
+        "_id": "69aafe3144f22127b842802a"
+      }
+    ],
+    "year": 2025
+  },
+  {
+    "revenue": 148027,
+    "expenses": 118421,
+    "profit": 29606,
+    "growthIndicator": 3,
+    "costCategories": [
+      {
+        "name": "Production",
+        "amount": 71052,
+        "_id": "69aafe3144f22127b842802f"
+      },
+      {
+        "name": "Admin",
+        "amount": 47368,
+        "_id": "69aafe3144f22127b8428030"
+      }
+    ],
+    "year": 2025
+  },
+  {
+    "revenue": 91886,
+    "expenses": 73508,
+    "profit": 18378,
+    "growthIndicator": 9,
+    "costCategories": [
+      {
+        "name": "Production",
+        "amount": 44104,
+        "_id": "69aafe3144f22127b8428035"
+      },
+      {
+        "name": "Admin",
+        "amount": 29403,
+        "_id": "69aafe3144f22127b8428036"
+      }
+    ],
+    "year": 2025
+  },
+  {
+    "revenue": 61268,
+    "expenses": 49014,
+    "profit": 12254,
+    "growthIndicator": 5,
+    "costCategories": [
+      {
+        "name": "Production",
+        "amount": 29408,
+        "_id": "69aafe3144f22127b842803b"
+      },
+      {
+        "name": "Admin",
+        "amount": 19605,
+        "_id": "69aafe3144f22127b842803c"
+      }
+    ],
+    "year": 2025
+  },
+  {
+    "revenue": 110211,
+    "expenses": 88168,
+    "profit": 22043,
+    "growthIndicator": 8,
+    "costCategories": [
+      {
+        "name": "Production",
+        "amount": 52900,
+        "_id": "69aafe3144f22127b8428041"
+      },
+      {
+        "name": "Admin",
+        "amount": 35267,
+        "_id": "69aafe3144f22127b8428042"
+      }
+    ],
+    "year": 2025
+  },
+  {
+    "revenue": 181732,
+    "expenses": 190818,
+    "profit": -9086,
+    "growthIndicator": 10,
+    "costCategories": [
+      {
+        "name": "Production",
+        "amount": 114490,
+        "_id": "69aafe3144f22127b8428047"
+      },
+      {
+        "name": "Admin",
+        "amount": 76327,
+        "_id": "69aafe3144f22127b8428048"
+      }
+    ],
+    "year": 2025
+  },
+  {
+    "revenue": 118301,
+    "expenses": 94640,
+    "profit": 23661,
+    "growthIndicator": -1,
+    "costCategories": [
+      {
+        "name": "Production",
+        "amount": 56784,
+        "_id": "69aafe3144f22127b842804d"
+      },
+      {
+        "name": "Admin",
+        "amount": 37856,
+        "_id": "69aafe3144f22127b842804e"
+      }
+    ],
+    "year": 2025
+  },
+  {
+    "revenue": 122674,
+    "expenses": 98139,
+    "profit": 24535,
+    "growthIndicator": 10,
+    "costCategories": [
+      {
+        "name": "Production",
+        "amount": 58883,
+        "_id": "69aafe3144f22127b8428053"
+      },
+      {
+        "name": "Admin",
+        "amount": 39255,
+        "_id": "69aafe3144f22127b8428054"
+      }
+    ],
+    "year": 2026
+  },
+  {
+    "revenue": 215893,
+    "expenses": 189985,
+    "profit": 25908,
+    "growthIndicator": -4,
+    "costCategories": [
+      {
+        "name": "Production",
+        "amount": 104491,
+        "_id": "69abb59790098a7391be9a34"
+      },
+      {
+        "name": "Labor",
+        "amount": 47496,
+        "_id": "69abb59790098a7391be9a35"
+      },
+      {
+        "name": "Logistics",
+        "amount": 28497,
+        "_id": "69abb59790098a7391be9a36"
+      },
+      {
+        "name": "Admin",
+        "amount": 9499,
+        "_id": "69abb59790098a7391be9a37"
+      }
+    ],
+    "year": 2024
+  },
+  {
+    "revenue": 240945,
+    "expenses": 209622,
+    "profit": 31323,
+    "growthIndicator": -5,
+    "costCategories": [
+      {
+        "name": "Production",
+        "amount": 115292,
+        "_id": "69abb59790098a7391be9a3a"
+      },
+      {
+        "name": "Labor",
+        "amount": 52405,
+        "_id": "69abb59790098a7391be9a3b"
+      },
+      {
+        "name": "Logistics",
+        "amount": 31443,
+        "_id": "69abb59790098a7391be9a3c"
+      },
+      {
+        "name": "Admin",
+        "amount": 10481,
+        "_id": "69abb59790098a7391be9a3d"
+      }
+    ],
+    "year": 2024
+  },
+  {
+    "revenue": 181126,
+    "expenses": 168447,
+    "profit": 12679,
+    "growthIndicator": 9,
+    "costCategories": [
+      {
+        "name": "Production",
+        "amount": 92645,
+        "_id": "69abb59790098a7391be9a40"
+      },
+      {
+        "name": "Labor",
+        "amount": 42111,
+        "_id": "69abb59790098a7391be9a41"
+      },
+      {
+        "name": "Logistics",
+        "amount": 25267,
+        "_id": "69abb59790098a7391be9a42"
+      },
+      {
+        "name": "Admin",
+        "amount": 8422,
+        "_id": "69abb59790098a7391be9a43"
+      }
+    ],
+    "year": 2024
+  },
+  {
+    "revenue": 110457,
+    "expenses": 87261,
+    "profit": 23196,
+    "growthIndicator": 1,
+    "costCategories": [
+      {
+        "name": "Production",
+        "amount": 47993,
+        "_id": "69abb59790098a7391be9a46"
+      },
+      {
+        "name": "Labor",
+        "amount": 21815,
+        "_id": "69abb59790098a7391be9a47"
+      },
+      {
+        "name": "Logistics",
+        "amount": 13089,
+        "_id": "69abb59790098a7391be9a48"
+      },
+      {
+        "name": "Admin",
+        "amount": 4363,
+        "_id": "69abb59790098a7391be9a49"
+      }
+    ],
+    "year": 2025
+  },
+  {
+    "revenue": 404515,
+    "expenses": 339792,
+    "profit": 64723,
+    "growthIndicator": 3,
+    "costCategories": [
+      {
+        "name": "Production",
+        "amount": 186885,
+        "_id": "69abb59790098a7391be9a4c"
+      },
+      {
+        "name": "Labor",
+        "amount": 84948,
+        "_id": "69abb59790098a7391be9a4d"
+      },
+      {
+        "name": "Logistics",
+        "amount": 50968,
+        "_id": "69abb59790098a7391be9a4e"
+      },
+      {
+        "name": "Admin",
+        "amount": 16989,
+        "_id": "69abb59790098a7391be9a4f"
+      }
+    ],
+    "year": 2025
+  },
+  {
+    "revenue": 161408,
+    "expenses": 117827,
+    "profit": 43581,
+    "growthIndicator": 0,
+    "costCategories": [
+      {
+        "name": "Production",
+        "amount": 64804,
+        "_id": "69abb59790098a7391be9a52"
+      },
+      {
+        "name": "Labor",
+        "amount": 29456,
+        "_id": "69abb59790098a7391be9a53"
+      },
+      {
+        "name": "Logistics",
+        "amount": 17674,
+        "_id": "69abb59790098a7391be9a54"
+      },
+      {
+        "name": "Admin",
+        "amount": 5891,
+        "_id": "69abb59790098a7391be9a55"
+      }
+    ],
+    "year": 2026
+  },
+  {
+    "revenue": 455662,
+    "expenses": 369086,
+    "profit": 86576,
+    "growthIndicator": 6,
+    "costCategories": [
+      {
+        "name": "Production",
+        "amount": 202997,
+        "_id": "69abb59790098a7391be9a58"
+      },
+      {
+        "name": "Labor",
+        "amount": 92271,
+        "_id": "69abb59790098a7391be9a59"
+      },
+      {
+        "name": "Logistics",
+        "amount": 55362,
+        "_id": "69abb59790098a7391be9a5a"
+      },
+      {
+        "name": "Admin",
+        "amount": 18454,
+        "_id": "69abb59790098a7391be9a5b"
+      }
+    ],
+    "year": 2026
+  },
+  {
+    "revenue": 169691,
+    "expenses": 147631,
+    "profit": 22060,
+    "growthIndicator": 8,
+    "costCategories": [
+      {
+        "name": "Production",
+        "amount": 81197,
+        "_id": "69abb59790098a7391be9a5e"
+      },
+      {
+        "name": "Labor",
+        "amount": 36907,
+        "_id": "69abb59790098a7391be9a5f"
+      },
+      {
+        "name": "Logistics",
+        "amount": 22144,
+        "_id": "69abb59790098a7391be9a60"
+      },
+      {
+        "name": "Admin",
+        "amount": 7381,
+        "_id": "69abb59790098a7391be9a61"
+      }
+    ],
+    "year": 2024
+  },
+  {
+    "revenue": 289902,
+    "expenses": 220325,
+    "profit": 69577,
+    "growthIndicator": -4,
+    "costCategories": [
+      {
+        "name": "Production",
+        "amount": 121178,
+        "_id": "69abb59790098a7391be9a64"
+      },
+      {
+        "name": "Labor",
+        "amount": 55081,
+        "_id": "69abb59790098a7391be9a65"
+      },
+      {
+        "name": "Logistics",
+        "amount": 33048,
+        "_id": "69abb59790098a7391be9a66"
+      },
+      {
+        "name": "Admin",
+        "amount": 11016,
+        "_id": "69abb59790098a7391be9a67"
+      }
+    ],
+    "year": 2024
+  },
+  {
+    "revenue": 298476,
+    "expenses": 256689,
+    "profit": 41787,
+    "growthIndicator": 12,
+    "costCategories": [
+      {
+        "name": "Production",
+        "amount": 141178,
+        "_id": "69abb59790098a7391be9a6a"
+      },
+      {
+        "name": "Labor",
+        "amount": 64172,
+        "_id": "69abb59790098a7391be9a6b"
+      },
+      {
+        "name": "Logistics",
+        "amount": 38503,
+        "_id": "69abb59790098a7391be9a6c"
+      },
+      {
+        "name": "Admin",
+        "amount": 12834,
+        "_id": "69abb59790098a7391be9a6d"
+      }
+    ],
+    "year": 2024
+  },
+  {
+    "revenue": 203942,
+    "expenses": 185587,
+    "profit": 18355,
+    "growthIndicator": 14,
+    "costCategories": [
+      {
+        "name": "Production",
+        "amount": 102072,
+        "_id": "69abb59790098a7391be9a70"
+      },
+      {
+        "name": "Labor",
+        "amount": 46396,
+        "_id": "69abb59790098a7391be9a71"
+      },
+      {
+        "name": "Logistics",
+        "amount": 27838,
+        "_id": "69abb59790098a7391be9a72"
+      },
+      {
+        "name": "Admin",
+        "amount": 9279,
+        "_id": "69abb59790098a7391be9a73"
+      }
+    ],
+    "year": 2025
+  },
+  {
+    "revenue": 322494,
+    "expenses": 283794,
+    "profit": 38700,
+    "growthIndicator": 2,
+    "costCategories": [
+      {
+        "name": "Production",
+        "amount": 156086,
+        "_id": "69abb59790098a7391be9a76"
+      },
+      {
+        "name": "Labor",
+        "amount": 70948,
+        "_id": "69abb59790098a7391be9a77"
+      },
+      {
+        "name": "Logistics",
+        "amount": 42569,
+        "_id": "69abb59790098a7391be9a78"
+      },
+      {
+        "name": "Admin",
+        "amount": 14189,
+        "_id": "69abb59790098a7391be9a79"
+      }
+    ],
+    "year": 2025
+  },
+  {
+    "revenue": 482865,
+    "expenses": 342834,
+    "profit": 140031,
+    "growthIndicator": -5,
+    "costCategories": [
+      {
+        "name": "Production",
+        "amount": 188558,
+        "_id": "69abb59790098a7391be9a7c"
+      },
+      {
+        "name": "Labor",
+        "amount": 85708,
+        "_id": "69abb59790098a7391be9a7d"
+      },
+      {
+        "name": "Logistics",
+        "amount": 51425,
+        "_id": "69abb59790098a7391be9a7e"
+      },
+      {
+        "name": "Admin",
+        "amount": 17141,
+        "_id": "69abb59790098a7391be9a7f"
+      }
+    ],
+    "year": 2024
+  },
+  {
+    "revenue": 136528,
+    "expenses": 113318,
+    "profit": 23210,
+    "growthIndicator": 8,
+    "costCategories": [
+      {
+        "name": "Production",
+        "amount": 62324,
+        "_id": "69abb59790098a7391be9a82"
+      },
+      {
+        "name": "Labor",
+        "amount": 28329,
+        "_id": "69abb59790098a7391be9a83"
+      },
+      {
+        "name": "Logistics",
+        "amount": 16997,
+        "_id": "69abb59790098a7391be9a84"
+      },
+      {
+        "name": "Admin",
+        "amount": 5665,
+        "_id": "69abb59790098a7391be9a85"
+      }
+    ],
+    "year": 2026
+  }
+]

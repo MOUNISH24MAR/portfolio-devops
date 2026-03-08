@@ -1,0 +1,902 @@
+[
+  {
+    "region": "East Asia",
+    "country": "Japan",
+    "category": "Knitted Wear",
+    "volume": 13414,
+    "value": 147554,
+    "year": 2024,
+    "createdAt": "2024-09-30T18:30:00.000Z"
+  },
+  {
+    "region": "East Asia",
+    "country": "Japan",
+    "category": "Knitted Wear",
+    "volume": 14727,
+    "value": 176724,
+    "year": 2025,
+    "createdAt": "2025-01-31T18:30:00.000Z"
+  },
+  {
+    "region": "East Asia",
+    "country": "Japan",
+    "category": "Knitted Wear",
+    "volume": 4853,
+    "value": 53383,
+    "year": 2025,
+    "createdAt": "2025-08-31T18:30:00.000Z"
+  },
+  {
+    "region": "East Asia",
+    "country": "Japan",
+    "category": "Knitted Wear",
+    "volume": 12282,
+    "value": 110538,
+    "year": 2025,
+    "createdAt": "2025-11-30T18:30:00.000Z"
+  },
+  {
+    "region": "East Asia",
+    "country": "Japan",
+    "category": "Knitted Wear",
+    "volume": 14314,
+    "value": 114512,
+    "year": 2026,
+    "createdAt": "2025-12-31T18:30:00.000Z"
+  },
+  {
+    "region": "East Asia",
+    "country": "South Korea",
+    "category": "Sportswear",
+    "volume": 9544,
+    "value": 124072,
+    "year": 2025,
+    "createdAt": "2025-08-02T18:30:00.000Z"
+  },
+  {
+    "region": "East Asia",
+    "country": "South Korea",
+    "category": "Outerwear",
+    "volume": 16008,
+    "value": 176088,
+    "year": 2024,
+    "createdAt": "2024-11-30T18:30:00.000Z"
+  },
+  {
+    "region": "East Asia",
+    "country": "South Korea",
+    "category": "Nightwear",
+    "volume": 7534,
+    "value": 82874,
+    "year": 2026,
+    "createdAt": "2026-09-05T18:30:00.000Z"
+  },
+  {
+    "region": "East Asia",
+    "country": "Japan",
+    "category": "Knitted Wear",
+    "volume": 10954,
+    "value": 109540,
+    "year": 2024,
+    "createdAt": "2024-04-18T18:30:00.000Z"
+  },
+  {
+    "region": "East Asia",
+    "country": "Japan",
+    "category": "Nightwear",
+    "volume": 5329,
+    "value": 53290,
+    "year": 2026,
+    "createdAt": "2026-07-24T18:30:00.000Z"
+  },
+  {
+    "region": "East Asia",
+    "country": "Japan",
+    "category": "Sportswear",
+    "volume": 7255,
+    "value": 50785,
+    "year": 2026,
+    "createdAt": "2026-03-08T18:30:00.000Z"
+  },
+  {
+    "region": "East Asia",
+    "country": "Japan",
+    "category": "Knitted Wear",
+    "volume": 21505,
+    "value": 150535,
+    "year": 2026,
+    "createdAt": "2026-11-06T18:30:00.000Z"
+  },
+  {
+    "region": "East Asia",
+    "country": "Japan",
+    "category": "Knitted Wear",
+    "volume": 15026,
+    "value": 180312,
+    "year": 2024,
+    "createdAt": "2024-07-21T18:30:00.000Z"
+  },
+  {
+    "region": "East Asia",
+    "country": "Japan",
+    "category": "Knitted Wear",
+    "volume": 12319,
+    "value": 147828,
+    "year": 2025,
+    "createdAt": "2025-02-03T18:30:00.000Z"
+  },
+  {
+    "region": "East Asia",
+    "country": "Japan",
+    "category": "Sportswear",
+    "volume": 14412,
+    "value": 187356,
+    "year": 2024,
+    "createdAt": "2024-01-31T18:30:00.000Z"
+  },
+  {
+    "region": "East Asia",
+    "country": "Japan",
+    "category": "Outerwear",
+    "volume": 6123,
+    "value": 85722,
+    "year": 2025,
+    "createdAt": "2025-11-16T18:30:00.000Z"
+  },
+  {
+    "region": "East Asia",
+    "country": "South Korea",
+    "category": "Knitted Wear",
+    "volume": 9964,
+    "value": 119568,
+    "year": 2025,
+    "createdAt": "2025-05-21T18:30:00.000Z"
+  },
+  {
+    "region": "East Asia",
+    "country": "South Korea",
+    "category": "Nightwear",
+    "volume": 19051,
+    "value": 171459,
+    "year": 2026,
+    "createdAt": "2026-11-21T18:30:00.000Z"
+  },
+  {
+    "region": "East Asia",
+    "country": "Japan",
+    "category": "Sportswear",
+    "volume": 12914,
+    "value": 116226,
+    "year": 2025,
+    "createdAt": "2025-05-10T18:30:00.000Z"
+  },
+  {
+    "region": "European Union",
+    "country": "France",
+    "category": "Knitted Wear",
+    "volume": 13624,
+    "value": 108992,
+    "year": 2024,
+    "createdAt": "2024-10-31T18:30:00.000Z"
+  },
+  {
+    "region": "European Union",
+    "country": "France",
+    "category": "Knitted Wear",
+    "volume": 13031,
+    "value": 130310,
+    "year": 2024,
+    "createdAt": "2024-11-30T18:30:00.000Z"
+  },
+  {
+    "region": "European Union",
+    "country": "France",
+    "category": "Knitted Wear",
+    "volume": 7503,
+    "value": 82533,
+    "year": 2025,
+    "createdAt": "2024-12-31T18:30:00.000Z"
+  },
+  {
+    "region": "European Union",
+    "country": "France",
+    "category": "Knitted Wear",
+    "volume": 7555,
+    "value": 60440,
+    "year": 2025,
+    "createdAt": "2025-04-30T18:30:00.000Z"
+  },
+  {
+    "region": "European Union",
+    "country": "France",
+    "category": "Knitted Wear",
+    "volume": 13281,
+    "value": 119529,
+    "year": 2025,
+    "createdAt": "2025-05-31T18:30:00.000Z"
+  },
+  {
+    "region": "European Union",
+    "country": "France",
+    "category": "Knitted Wear",
+    "volume": 10977,
+    "value": 131724,
+    "year": 2025,
+    "createdAt": "2025-06-30T18:30:00.000Z"
+  },
+  {
+    "region": "European Union",
+    "country": "France",
+    "category": "Knitted Wear",
+    "volume": 10192,
+    "value": 91728,
+    "year": 2025,
+    "createdAt": "2025-09-30T18:30:00.000Z"
+  },
+  {
+    "region": "European Union",
+    "country": "France",
+    "category": "Outerwear",
+    "volume": 15738,
+    "value": 125904,
+    "year": 2025,
+    "createdAt": "2025-06-04T18:30:00.000Z"
+  },
+  {
+    "region": "European Union",
+    "country": "France",
+    "category": "Knitted Wear",
+    "volume": 11229,
+    "value": 78603,
+    "year": 2024,
+    "createdAt": "2024-12-04T18:30:00.000Z"
+  },
+  {
+    "region": "European Union",
+    "country": "France",
+    "category": "Nightwear",
+    "volume": 11402,
+    "value": 159628,
+    "year": 2025,
+    "createdAt": "2025-09-26T18:30:00.000Z"
+  },
+  {
+    "region": "European Union",
+    "country": "France",
+    "category": "Knitted Wear",
+    "volume": 9640,
+    "value": 86760,
+    "year": 2026,
+    "createdAt": "2026-03-10T18:30:00.000Z"
+  },
+  {
+    "region": "European Union",
+    "country": "France",
+    "category": "Knitted Wear",
+    "volume": 22232,
+    "value": 222320,
+    "year": 2026,
+    "createdAt": "2026-12-10T18:30:00.000Z"
+  },
+  {
+    "region": "European Union",
+    "country": "France",
+    "category": "Sportswear",
+    "volume": 11151,
+    "value": 156114,
+    "year": 2026,
+    "createdAt": "2026-11-04T18:30:00.000Z"
+  },
+  {
+    "region": "European Union",
+    "country": "France",
+    "category": "Outerwear",
+    "volume": 4931,
+    "value": 34517,
+    "year": 2024,
+    "createdAt": "2024-05-22T18:30:00.000Z"
+  },
+  {
+    "region": "European Union",
+    "country": "France",
+    "category": "Nightwear",
+    "volume": 17659,
+    "value": 194249,
+    "year": 2025,
+    "createdAt": "2025-01-01T18:30:00.000Z"
+  },
+  {
+    "region": "European Union",
+    "country": "France",
+    "category": "Nightwear",
+    "volume": 16822,
+    "value": 168220,
+    "year": 2026,
+    "createdAt": "2026-10-02T18:30:00.000Z"
+  },
+  {
+    "region": "European Union",
+    "country": "France",
+    "category": "Knitted Wear",
+    "volume": 13769,
+    "value": 123921,
+    "year": 2026,
+    "createdAt": "2026-07-02T18:30:00.000Z"
+  },
+  {
+    "region": "European Union",
+    "country": "France",
+    "category": "Sportswear",
+    "volume": 8387,
+    "value": 117418,
+    "year": 2025,
+    "createdAt": "2025-09-23T18:30:00.000Z"
+  },
+  {
+    "region": "European Union",
+    "country": "France",
+    "category": "Sportswear",
+    "volume": 14274,
+    "value": 199836,
+    "year": 2026,
+    "createdAt": "2026-09-09T18:30:00.000Z"
+  },
+  {
+    "region": "European Union",
+    "country": "France",
+    "category": "Nightwear",
+    "volume": 7200,
+    "value": 57600,
+    "year": 2026,
+    "createdAt": "2026-11-09T18:30:00.000Z"
+  },
+  {
+    "region": "European Union",
+    "country": "France",
+    "category": "Knitted Wear",
+    "volume": 5842,
+    "value": 40894,
+    "year": 2026,
+    "createdAt": "2026-08-10T18:30:00.000Z"
+  },
+  {
+    "region": "European Union",
+    "country": "France",
+    "category": "Outerwear",
+    "volume": 13230,
+    "value": 171990,
+    "year": 2026,
+    "createdAt": "2026-02-06T18:30:00.000Z"
+  },
+  {
+    "region": "European Union",
+    "country": "France",
+    "category": "Knitted Wear",
+    "volume": 12189,
+    "value": 146268,
+    "year": 2024,
+    "createdAt": "2024-01-10T18:30:00.000Z"
+  },
+  {
+    "region": "European Union",
+    "country": "France",
+    "category": "Sportswear",
+    "volume": 6702,
+    "value": 46914,
+    "year": 2026,
+    "createdAt": "2026-02-17T18:30:00.000Z"
+  },
+  {
+    "region": "European Union",
+    "country": "France",
+    "category": "Outerwear",
+    "volume": 20932,
+    "value": 230252,
+    "year": 2024,
+    "createdAt": "2024-12-26T18:30:00.000Z"
+  },
+  {
+    "region": "European Union",
+    "country": "France",
+    "category": "Sportswear",
+    "volume": 8451,
+    "value": 109863,
+    "year": 2025,
+    "createdAt": "2025-03-09T18:30:00.000Z"
+  },
+  {
+    "region": "European Union",
+    "country": "France",
+    "category": "Nightwear",
+    "volume": 9798,
+    "value": 107778,
+    "year": 2024,
+    "createdAt": "2024-03-20T18:30:00.000Z"
+  },
+  {
+    "region": "European Union",
+    "country": "France",
+    "category": "Knitted Wear",
+    "volume": 18234,
+    "value": 145872,
+    "year": 2026,
+    "createdAt": "2026-02-07T18:30:00.000Z"
+  },
+  {
+    "region": "European Union",
+    "country": "France",
+    "category": "Sportswear",
+    "volume": 10661,
+    "value": 138593,
+    "year": 2024,
+    "createdAt": "2024-04-01T18:30:00.000Z"
+  },
+  {
+    "region": "European Union",
+    "country": "France",
+    "category": "Sportswear",
+    "volume": 6079,
+    "value": 72948,
+    "year": 2025,
+    "createdAt": "2025-01-20T18:30:00.000Z"
+  },
+  {
+    "region": "Middle East",
+    "country": "UAE",
+    "category": "Outerwear",
+    "volume": 6333,
+    "value": 63330,
+    "year": 2025,
+    "createdAt": "2025-02-03T18:30:00.000Z"
+  },
+  {
+    "region": "Middle East",
+    "country": "UAE",
+    "category": "Knitted Wear",
+    "volume": 11140,
+    "value": 155960,
+    "year": 2025,
+    "createdAt": "2025-01-25T18:30:00.000Z"
+  },
+  {
+    "region": "Middle East",
+    "country": "Qatar",
+    "category": "Sportswear",
+    "volume": 13677,
+    "value": 95739,
+    "year": 2026,
+    "createdAt": "2026-06-26T18:30:00.000Z"
+  },
+  {
+    "region": "Middle East",
+    "country": "UAE",
+    "category": "Sportswear",
+    "volume": 19894,
+    "value": 139258,
+    "year": 2026,
+    "createdAt": "2026-10-02T18:30:00.000Z"
+  },
+  {
+    "region": "Middle East",
+    "country": "Qatar",
+    "category": "Sportswear",
+    "volume": 7112,
+    "value": 71120,
+    "year": 2026,
+    "createdAt": "2026-12-18T18:30:00.000Z"
+  },
+  {
+    "region": "Middle East",
+    "country": "Qatar",
+    "category": "Knitted Wear",
+    "volume": 17186,
+    "value": 189046,
+    "year": 2026,
+    "createdAt": "2026-03-12T18:30:00.000Z"
+  },
+  {
+    "region": "Middle East",
+    "country": "UAE",
+    "category": "Nightwear",
+    "volume": 16037,
+    "value": 192444,
+    "year": 2026,
+    "createdAt": "2026-08-21T18:30:00.000Z"
+  },
+  {
+    "region": "Middle East",
+    "country": "Qatar",
+    "category": "Outerwear",
+    "volume": 10500,
+    "value": 84000,
+    "year": 2026,
+    "createdAt": "2026-11-10T18:30:00.000Z"
+  },
+  {
+    "region": "Middle East",
+    "country": "UAE",
+    "category": "Outerwear",
+    "volume": 10154,
+    "value": 132002,
+    "year": 2026,
+    "createdAt": "2026-08-13T18:30:00.000Z"
+  },
+  {
+    "region": "Middle East",
+    "country": "UAE",
+    "category": "Nightwear",
+    "volume": 17196,
+    "value": 154764,
+    "year": 2024,
+    "createdAt": "2024-02-17T18:30:00.000Z"
+  },
+  {
+    "region": "Middle East",
+    "country": "UAE",
+    "category": "Sportswear",
+    "volume": 11364,
+    "value": 113640,
+    "year": 2025,
+    "createdAt": "2025-09-10T18:30:00.000Z"
+  },
+  {
+    "region": "Middle East",
+    "country": "UAE",
+    "category": "Nightwear",
+    "volume": 5765,
+    "value": 63415,
+    "year": 2024,
+    "createdAt": "2024-06-04T18:30:00.000Z"
+  },
+  {
+    "region": "Middle East",
+    "country": "UAE",
+    "category": "Nightwear",
+    "volume": 4897,
+    "value": 44073,
+    "year": 2024,
+    "createdAt": "2024-05-03T18:30:00.000Z"
+  },
+  {
+    "region": "Middle East",
+    "country": "UAE",
+    "category": "Sportswear",
+    "volume": 9474,
+    "value": 123162,
+    "year": 2025,
+    "createdAt": "2025-05-01T18:30:00.000Z"
+  },
+  {
+    "region": "Middle East",
+    "country": "Qatar",
+    "category": "Nightwear",
+    "volume": 3654,
+    "value": 29232,
+    "year": 2025,
+    "createdAt": "2025-07-25T18:30:00.000Z"
+  },
+  {
+    "region": "Middle East",
+    "country": "UAE",
+    "category": "Nightwear",
+    "volume": 5048,
+    "value": 40384,
+    "year": 2024,
+    "createdAt": "2024-02-18T18:30:00.000Z"
+  },
+  {
+    "region": "Middle East",
+    "country": "UAE",
+    "category": "Outerwear",
+    "volume": 13607,
+    "value": 136070,
+    "year": 2024,
+    "createdAt": "2024-07-09T18:30:00.000Z"
+  },
+  {
+    "region": "Middle East",
+    "country": "Qatar",
+    "category": "Outerwear",
+    "volume": 13641,
+    "value": 177333,
+    "year": 2026,
+    "createdAt": "2026-01-01T18:30:00.000Z"
+  },
+  {
+    "region": "Middle East",
+    "country": "UAE",
+    "category": "Nightwear",
+    "volume": 19282,
+    "value": 134974,
+    "year": 2025,
+    "createdAt": "2025-01-14T18:30:00.000Z"
+  },
+  {
+    "region": "Middle East",
+    "country": "UAE",
+    "category": "Knitted Wear",
+    "volume": 4918,
+    "value": 59016,
+    "year": 2025,
+    "createdAt": "2025-02-18T18:30:00.000Z"
+  },
+  {
+    "region": "Middle East",
+    "country": "Qatar",
+    "category": "Outerwear",
+    "volume": 13958,
+    "value": 181454,
+    "year": 2024,
+    "createdAt": "2024-11-01T18:30:00.000Z"
+  },
+  {
+    "region": "North America",
+    "country": "USA",
+    "category": "Knitted Wear",
+    "volume": 15050,
+    "value": 135450,
+    "year": 2025,
+    "createdAt": "2025-02-28T18:30:00.000Z"
+  },
+  {
+    "region": "North America",
+    "country": "USA",
+    "category": "Knitted Wear",
+    "volume": 11971,
+    "value": 143652,
+    "year": 2025,
+    "createdAt": "2025-03-31T18:30:00.000Z"
+  },
+  {
+    "region": "North America",
+    "country": "USA",
+    "category": "Knitted Wear",
+    "volume": 8819,
+    "value": 79371,
+    "year": 2025,
+    "createdAt": "2025-07-31T18:30:00.000Z"
+  },
+  {
+    "region": "North America",
+    "country": "USA",
+    "category": "Knitted Wear",
+    "volume": 20578,
+    "value": 164624,
+    "year": 2025,
+    "createdAt": "2025-10-31T18:30:00.000Z"
+  },
+  {
+    "region": "North America",
+    "country": "USA",
+    "category": "Outerwear",
+    "volume": 21250,
+    "value": 191250,
+    "year": 2026,
+    "createdAt": "2026-10-27T18:30:00.000Z"
+  },
+  {
+    "region": "North America",
+    "country": "USA",
+    "category": "Nightwear",
+    "volume": 16473,
+    "value": 148257,
+    "year": 2025,
+    "createdAt": "2025-01-16T18:30:00.000Z"
+  },
+  {
+    "region": "North America",
+    "country": "USA",
+    "category": "Nightwear",
+    "volume": 9675,
+    "value": 135450,
+    "year": 2025,
+    "createdAt": "2025-07-14T18:30:00.000Z"
+  },
+  {
+    "region": "North America",
+    "country": "USA",
+    "category": "Knitted Wear",
+    "volume": 10918,
+    "value": 87344,
+    "year": 2026,
+    "createdAt": "2026-07-27T18:30:00.000Z"
+  },
+  {
+    "region": "North America",
+    "country": "USA",
+    "category": "Knitted Wear",
+    "volume": 17469,
+    "value": 139752,
+    "year": 2024,
+    "createdAt": "2024-11-04T18:30:00.000Z"
+  },
+  {
+    "region": "North America",
+    "country": "USA",
+    "category": "Sportswear",
+    "volume": 6207,
+    "value": 74484,
+    "year": 2025,
+    "createdAt": "2025-09-24T18:30:00.000Z"
+  },
+  {
+    "region": "North America",
+    "country": "USA",
+    "category": "Outerwear",
+    "volume": 15086,
+    "value": 165946,
+    "year": 2025,
+    "createdAt": "2025-10-31T18:30:00.000Z"
+  },
+  {
+    "region": "North America",
+    "country": "USA",
+    "category": "Sportswear",
+    "volume": 7471,
+    "value": 52297,
+    "year": 2026,
+    "createdAt": "2026-03-15T18:30:00.000Z"
+  },
+  {
+    "region": "North America",
+    "country": "USA",
+    "category": "Knitted Wear",
+    "volume": 20122,
+    "value": 221342,
+    "year": 2025,
+    "createdAt": "2025-02-21T18:30:00.000Z"
+  },
+  {
+    "region": "North America",
+    "country": "USA",
+    "category": "Knitted Wear",
+    "volume": 9698,
+    "value": 96980,
+    "year": 2026,
+    "createdAt": "2026-05-17T18:30:00.000Z"
+  },
+  {
+    "region": "North America",
+    "country": "USA",
+    "category": "Knitted Wear",
+    "volume": 15692,
+    "value": 109844,
+    "year": 2025,
+    "createdAt": "2025-09-08T18:30:00.000Z"
+  },
+  {
+    "region": "Oceania",
+    "country": "New Zealand",
+    "category": "Nightwear",
+    "volume": 15295,
+    "value": 152950,
+    "year": 2025,
+    "createdAt": "2025-05-06T18:30:00.000Z"
+  },
+  {
+    "region": "Oceania",
+    "country": "New Zealand",
+    "category": "Knitted Wear",
+    "volume": 21151,
+    "value": 274963,
+    "year": 2025,
+    "createdAt": "2025-01-31T18:30:00.000Z"
+  },
+  {
+    "region": "Oceania",
+    "country": "New Zealand",
+    "category": "Outerwear",
+    "volume": 18540,
+    "value": 185400,
+    "year": 2024,
+    "createdAt": "2024-02-19T18:30:00.000Z"
+  },
+  {
+    "region": "Oceania",
+    "country": "New Zealand",
+    "category": "Outerwear",
+    "volume": 7424,
+    "value": 59392,
+    "year": 2024,
+    "createdAt": "2024-11-11T18:30:00.000Z"
+  },
+  {
+    "region": "Oceania",
+    "country": "New Zealand",
+    "category": "Outerwear",
+    "volume": 11848,
+    "value": 106632,
+    "year": 2025,
+    "createdAt": "2025-10-05T18:30:00.000Z"
+  },
+  {
+    "region": "Oceania",
+    "country": "New Zealand",
+    "category": "Knitted Wear",
+    "volume": 6914,
+    "value": 69140,
+    "year": 2025,
+    "createdAt": "2025-04-21T18:30:00.000Z"
+  },
+  {
+    "region": "Oceania",
+    "country": "New Zealand",
+    "category": "Nightwear",
+    "volume": 11061,
+    "value": 77427,
+    "year": 2024,
+    "createdAt": "2024-05-07T18:30:00.000Z"
+  },
+  {
+    "region": "Oceania",
+    "country": "New Zealand",
+    "category": "Sportswear",
+    "volume": 12289,
+    "value": 147468,
+    "year": 2025,
+    "createdAt": "2025-08-16T18:30:00.000Z"
+  },
+  {
+    "region": "Oceania",
+    "country": "New Zealand",
+    "category": "Knitted Wear",
+    "volume": 9903,
+    "value": 99030,
+    "year": 2024,
+    "createdAt": "2024-04-09T18:30:00.000Z"
+  },
+  {
+    "region": "Oceania",
+    "country": "New Zealand",
+    "category": "Knitted Wear",
+    "volume": 20448,
+    "value": 265824,
+    "year": 2024,
+    "createdAt": "2024-11-07T18:30:00.000Z"
+  },
+  {
+    "region": "Oceania",
+    "country": "New Zealand",
+    "category": "Outerwear",
+    "volume": 8912,
+    "value": 98032,
+    "year": 2026,
+    "createdAt": "2026-01-24T18:30:00.000Z"
+  },
+  {
+    "region": "Oceania",
+    "country": "New Zealand",
+    "category": "Knitted Wear",
+    "volume": 23398,
+    "value": 187184,
+    "year": 2025,
+    "createdAt": "2025-12-16T18:30:00.000Z"
+  },
+  {
+    "region": "Oceania",
+    "country": "New Zealand",
+    "category": "Outerwear",
+    "volume": 7694,
+    "value": 92328,
+    "year": 2024,
+    "createdAt": "2024-10-25T18:30:00.000Z"
+  },
+  {
+    "region": "Oceania",
+    "country": "New Zealand",
+    "category": "Nightwear",
+    "volume": 7747,
+    "value": 108458,
+    "year": 2024,
+    "createdAt": "2024-08-10T18:30:00.000Z"
+  },
+  {
+    "region": "Oceania",
+    "country": "New Zealand",
+    "category": "Knitted Wear",
+    "volume": 14918,
+    "value": 193934,
+    "year": 2026,
+    "createdAt": "2026-07-19T18:30:00.000Z"
+  }
+]

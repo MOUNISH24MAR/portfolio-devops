@@ -15,6 +15,16 @@ const Users = () => {
     role: "MANAGER"
   });
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    fetchData();
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const checkMobile = () => setIsMobile(window.innerWidth < 768);
 
   const fetchData = async () => {
     try {
@@ -31,9 +41,7 @@ const Users = () => {
     }
   };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+
 
   const handleCreateUser = async (e) => {
     e.preventDefault();
@@ -94,28 +102,44 @@ const Users = () => {
   return (
     <div className="admin-content-wrapper">
       <div className="chart-card">
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px' }}>
+        <div style={{ 
+          display: 'flex', 
+          justifyContent: 'space-between', 
+          alignItems: isMobile ? 'flex-start' : 'center', 
+          flexDirection: isMobile ? 'column' : 'row',
+          gap: '20px',
+          marginBottom: '32px' 
+        }}>
           <div>
-            <h2 style={{ fontSize: '1.25rem', marginBottom: '4px' }}>Access Control</h2>
+            <h2 style={{ fontSize: isMobile ? '1.5rem' : '1.25rem', marginBottom: '4px' }}>Access Control</h2>
             <p style={{ color: 'var(--text-secondary)', fontSize: '0.8rem' }}>Manage internal system identities and role assignments</p>
           </div>
-          <div style={{ display: 'flex', gap: '16px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', background: 'var(--bg-light)', padding: '8px 16px', borderRadius: '4px', border: '1px solid var(--border-subtle)' }}>
+          <div style={{ display: 'flex', gap: '16px', flexDirection: isMobile ? 'column' : 'row', width: isMobile ? '100%' : 'auto' }}>
+            <div style={{ 
+              display: 'flex', 
+              alignItems: 'center', 
+              background: 'var(--bg-light)', 
+              padding: '10px 16px', 
+              borderRadius: '4px', 
+              border: '1px solid var(--border-subtle)',
+              width: '100%'
+            }}>
               <Search size={16} color="var(--text-secondary)" />
               <input
                 type="text"
                 placeholder="Search accounts..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                style={{ background: 'none', border: 'none', padding: '4px 8px', color: 'var(--text-primary)', fontSize: '0.9rem', outline: 'none' }}
+                style={{ background: 'none', border: 'none', padding: '4px 8px', color: 'var(--text-primary)', fontSize: '0.9rem', outline: 'none', width: '100%' }}
               />
             </div>
             <button
               onClick={() => setShowModal(true)}
-              style={{ background: 'var(--text-primary)', color: 'white', border: 'none', padding: '10px 20px', borderRadius: '4px', fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px' }}
+              className="admin-btn-primary"
+              style={{ padding: '12px 24px', borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}
             >
               <UserPlus size={18} />
-              + Create User
+              <span>Create User</span>
             </button>
           </div>
         </div>

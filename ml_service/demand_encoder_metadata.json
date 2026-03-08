@@ -1,0 +1,45 @@
+{
+  "model_name": "DecisionTreeClassifier",
+  "target": "demand_level",
+  "features": [
+    "product_enc",
+    "country_enc",
+    "month",
+    "year"
+  ],
+  "categorical": [
+    "product_description",
+    "destination_country"
+  ],
+  "numeric": [
+    "month",
+    "year"
+  ],
+  "label_encoders": {
+    "product_description": [
+      "knitted wear",
+      "nightwear",
+      "outerwear",
+      "sportswear"
+    ],
+    "destination_country": [
+      "france",
+      "japan",
+      "new zealand",
+      "qatar",
+      "south korea",
+      "uae",
+      "usa"
+    ],
+    "demand_level_classes": [
+      "High",
+      "Low",
+      "Medium"
+    ]
+  },
+  "performance": {
+    "accuracy": 0.6,
+    "test_size": 20,
+    "train_size": 80
+  }
+}

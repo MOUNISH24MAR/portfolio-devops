@@ -275,8 +275,8 @@ const AdminDashboard = () => {
           <div className="kpi-label">Pending Verifications</div>
         </div>
         <div className="kpi-card">
-          <div className="kpi-header"><DollarSign size={isMobile ? 16 : 18} color="var(--admin-accent)" /></div>
-          <div className="kpi-value">${(stats?.kpis?.totalExportsValue / 1000).toFixed(1)}K</div>
+          <div className="kpi-header"><ActivityIcon size={isMobile ? 16 : 18} color="var(--admin-accent)" /></div>
+          <div className="kpi-value">₹{stats?.kpis?.totalExportsValue?.toLocaleString('en-IN')}</div>
           <div className="kpi-label">Export Valuation</div>
         </div>
       </div>

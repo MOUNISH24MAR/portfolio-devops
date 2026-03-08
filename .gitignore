@@ -72,3 +72,29 @@ dist-ssr
 
 # OS
 Thumbs.db
+
+# Python & ML
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.env
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.coverage
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+.ipynb_checkpoints/
+.pytest_cache/
+*.pkl
+*.csv
+!export_with_demand.csv
+!cleaned_export_data.csv

@@ -1,0 +1,49 @@
+{
+  "model_name": "LinearRegression",
+  "target": "value",
+  "features": [
+    "exporter_name_enc",
+    "product_description_enc",
+    "destination_country_enc",
+    "quantity",
+    "year",
+    "month",
+    "quarter"
+  ],
+  "categorical": [
+    "exporter_name",
+    "product_description",
+    "destination_country"
+  ],
+  "numeric": [
+    "quantity",
+    "year",
+    "month",
+    "quarter"
+  ],
+  "label_encoders": {
+    "exporter_name": [
+      "vr fashions"
+    ],
+    "product_description": [
+      "knitted wear",
+      "nightwear",
+      "outerwear",
+      "sportswear"
+    ],
+    "destination_country": [
+      "france",
+      "japan",
+      "new zealand",
+      "qatar",
+      "south korea",
+      "uae",
+      "usa"
+    ]
+  },
+  "performance": {
+    "mae": 18380.16391023239,
+    "rmse": 21793.466867164352,
+    "r2": 0.8008197397311958
+  }
+}

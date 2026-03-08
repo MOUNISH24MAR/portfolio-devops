@@ -1,0 +1,282 @@
+[
+  {
+    "employeeId": "EMP-5926",
+    "department": "Administration",
+    "role": "Production Staff",
+    "joiningDate": "2026-03-06T16:17:53.788Z",
+    "status": "Active"
+  },
+  {
+    "employeeId": "EMP-4392",
+    "department": "Administration",
+    "role": "Accountant",
+    "joiningDate": "2023-12-15T18:30:00.000Z",
+    "status": "Active"
+  },
+  {
+    "employeeId": "EMP-6451",
+    "department": "Administration",
+    "role": "Clerk",
+    "joiningDate": "2023-04-20T18:30:00.000Z",
+    "status": "Active"
+  },
+  {
+    "employeeId": "EMP-3518",
+    "department": "Administration",
+    "role": "Clerk",
+    "joiningDate": "2023-08-26T18:30:00.000Z",
+    "status": "Active"
+  },
+  {
+    "employeeId": "EMP-5014",
+    "department": "Administration",
+    "role": "Clerk",
+    "joiningDate": "2023-08-15T18:30:00.000Z",
+    "status": "Active"
+  },
+  {
+    "employeeId": "EMP-8191",
+    "department": "Administration",
+    "role": "Clerk",
+    "joiningDate": "2023-01-24T18:30:00.000Z",
+    "status": "Active"
+  },
+  {
+    "employeeId": "EMP-7688",
+    "department": "Administration",
+    "role": "Accountant",
+    "joiningDate": "2023-02-20T18:30:00.000Z",
+    "status": "Active"
+  },
+  {
+    "employeeId": "EMP-3132",
+    "department": "Design",
+    "role": "Production Staff",
+    "joiningDate": "2026-03-06T16:17:53.837Z",
+    "status": "Active"
+  },
+  {
+    "employeeId": "EMP-5214",
+    "department": "Design",
+    "role": "Fashion Designer",
+    "joiningDate": "2023-03-25T18:30:00.000Z",
+    "status": "Active"
+  },
+  {
+    "employeeId": "EMP-5225",
+    "department": "Design",
+    "role": "Pattern Maker",
+    "joiningDate": "2023-09-09T18:30:00.000Z",
+    "status": "Active"
+  },
+  {
+    "employeeId": "EMP-5398",
+    "department": "Design",
+    "role": "Fashion Designer",
+    "joiningDate": "2023-12-14T18:30:00.000Z",
+    "status": "Active"
+  },
+  {
+    "employeeId": "EMP-8846",
+    "department": "Design",
+    "role": "Pattern Maker",
+    "joiningDate": "2023-01-02T18:30:00.000Z",
+    "status": "Active"
+  },
+  {
+    "employeeId": "EMP-2567",
+    "department": "Design",
+    "role": "Fashion Designer",
+    "joiningDate": "2023-11-06T18:30:00.000Z",
+    "status": "Active"
+  },
+  {
+    "employeeId": "EMP-1977",
+    "department": "Design",
+    "role": "Fashion Designer",
+    "joiningDate": "2023-05-27T18:30:00.000Z",
+    "status": "Active"
+  },
+  {
+    "employeeId": "EMP-5951",
+    "department": "Design",
+    "role": "Fashion Designer",
+    "joiningDate": "2023-01-18T18:30:00.000Z",
+    "status": "Active"
+  },
+  {
+    "employeeId": "EMP-6016",
+    "department": "Logistics",
+    "role": "Production Staff",
+    "joiningDate": "2026-03-06T16:17:53.829Z",
+    "status": "Active"
+  },
+  {
+    "employeeId": "EMP-9217",
+    "department": "Logistics",
+    "role": "Warehouse Helper",
+    "joiningDate": "2023-01-06T18:30:00.000Z",
+    "status": "Active"
+  },
+  {
+    "employeeId": "EMP-2753",
+    "department": "Logistics",
+    "role": "Dispatch Manager",
+    "joiningDate": "2023-04-01T18:30:00.000Z",
+    "status": "Active"
+  },
+  {
+    "employeeId": "EMP-1796",
+    "department": "Logistics",
+    "role": "Warehouse Helper",
+    "joiningDate": "2023-04-21T18:30:00.000Z",
+    "status": "Active"
+  },
+  {
+    "employeeId": "EMP-9264",
+    "department": "Logistics",
+    "role": "Dispatch Manager",
+    "joiningDate": "2023-03-15T18:30:00.000Z",
+    "status": "Active"
+  },
+  {
+    "employeeId": "EMP-4286",
+    "department": "Logistics",
+    "role": "Dispatch Manager",
+    "joiningDate": "2023-01-09T18:30:00.000Z",
+    "status": "Active"
+  },
+  {
+    "employeeId": "EMP-7586",
+    "department": "Production",
+    "role": "Production Staff",
+    "joiningDate": "2026-03-06T16:17:53.721Z",
+    "status": "Active"
+  },
+  {
+    "employeeId": "EMP-5603",
+    "department": "Production",
+    "role": "Ironing Staff",
+    "joiningDate": "2023-03-13T18:30:00.000Z",
+    "status": "Active"
+  },
+  {
+    "employeeId": "EMP-7039",
+    "department": "Production",
+    "role": "Cutting Specialist",
+    "joiningDate": "2023-09-12T18:30:00.000Z",
+    "status": "Active"
+  },
+  {
+    "employeeId": "EMP-8165",
+    "department": "Production",
+    "role": "Cutting Specialist",
+    "joiningDate": "2023-09-20T18:30:00.000Z",
+    "status": "Active"
+  },
+  {
+    "employeeId": "EMP-7975",
+    "department": "Production",
+    "role": "Sewing Operator",
+    "joiningDate": "2023-09-03T18:30:00.000Z",
+    "status": "Active"
+  },
+  {
+    "employeeId": "EMP-1392",
+    "department": "Production",
+    "role": "Sewing Operator",
+    "joiningDate": "2023-07-17T18:30:00.000Z",
+    "status": "Active"
+  },
+  {
+    "employeeId": "EMP-9942",
+    "department": "Production",
+    "role": "Sewing Operator",
+    "joiningDate": "2023-05-13T18:30:00.000Z",
+    "status": "Active"
+  },
+  {
+    "employeeId": "EMP-8001",
+    "department": "Quality Control",
+    "role": "Production Staff",
+    "joiningDate": "2026-03-06T16:17:53.781Z",
+    "status": "Active"
+  },
+  {
+    "employeeId": "EMP-7727",
+    "department": "Quality Control",
+    "role": "QI Auditor",
+    "joiningDate": "2023-08-26T18:30:00.000Z",
+    "status": "Active"
+  },
+  {
+    "employeeId": "EMP-8658",
+    "department": "Quality Control",
+    "role": "QI Auditor",
+    "joiningDate": "2023-04-01T18:30:00.000Z",
+    "status": "Active"
+  },
+  {
+    "employeeId": "EMP-7430",
+    "department": "Quality Control",
+    "role": "QI Auditor",
+    "joiningDate": "2023-11-15T18:30:00.000Z",
+    "status": "Active"
+  },
+  {
+    "employeeId": "EMP-3174",
+    "department": "Quality Control",
+    "role": "Final Inspector",
+    "joiningDate": "2023-09-04T18:30:00.000Z",
+    "status": "Active"
+  },
+  {
+    "employeeId": "EMP-2132",
+    "department": "Quality Control",
+    "role": "QI Auditor",
+    "joiningDate": "2023-07-18T18:30:00.000Z",
+    "status": "Active"
+  },
+  {
+    "employeeId": "EMP-6377",
+    "department": "Quality Control",
+    "role": "QI Auditor",
+    "joiningDate": "2023-01-04T18:30:00.000Z",
+    "status": "Active"
+  },
+  {
+    "employeeId": "EMP-9261",
+    "department": "Quality Control",
+    "role": "Final Inspector",
+    "joiningDate": "2023-07-03T18:30:00.000Z",
+    "status": "Active"
+  },
+  {
+    "employeeId": "EMP-1772",
+    "department": "Quality Control",
+    "role": "Final Inspector",
+    "joiningDate": "2023-02-27T18:30:00.000Z",
+    "status": "Active"
+  },
+  {
+    "employeeId": "EMP-1619",
+    "department": "Quality Control",
+    "role": "QI Auditor",
+    "joiningDate": "2023-05-23T18:30:00.000Z",
+    "status": "Active"
+  },
+  {
+    "employeeId": "EMP-2522",
+    "department": "Quality Control",
+    "role": "Final Inspector",
+    "joiningDate": "2023-04-10T18:30:00.000Z",
+    "status": "Active"
+  },
+  {
+    "employeeId": "EMP-2932",
+    "department": "Quality Control",
+    "role": "Final Inspector",
+    "joiningDate": "2023-11-04T18:30:00.000Z",
+    "status": "Active"
+  }
+]

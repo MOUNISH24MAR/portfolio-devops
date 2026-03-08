@@ -26,10 +26,16 @@ const Inquiries = () => {
   const [filter, setFilter] = useState("all"); // all, new, responded
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedInquiry, setSelectedInquiry] = useState(null);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     fetchInquiries();
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
+
+  const checkMobile = () => setIsMobile(window.innerWidth < 1024);
 
   const fetchInquiries = async () => {
     try {
@@ -115,23 +121,34 @@ const Inquiries = () => {
   return (
     <div className="admin-content-wrapper">
       {/* HEADER */}
-      <header className="dashboard-control-bar">
+      <header className="dashboard-control-bar" style={{ 
+        flexDirection: isMobile ? 'column' : 'row', 
+        alignItems: isMobile ? 'flex-start' : 'flex-end',
+        gap: '24px'
+      }}>
         <div className="control-info">
-          <h1>Correspondence Node</h1>
+          <h1 style={{ fontSize: isMobile ? '2rem' : '3.5rem' }}>Correspondence Node</h1>
           <p>Global portal submissions: <span style={{ color: 'var(--admin-success)' }}>Active</span></p>
         </div>
-        <div className="control-actions">
-          <div style={{ display: 'flex', alignItems: 'center', background: 'var(--admin-card-bg)', padding: '8px 16px', border: '1px solid var(--admin-border)' }}>
+        <div className="control-actions" style={{ flexDirection: isMobile ? 'column' : 'row', width: isMobile ? '100%' : 'auto' }}>
+          <div style={{ 
+            display: 'flex', 
+            alignItems: 'center', 
+            background: 'var(--admin-card-bg)', 
+            padding: '10px 16px', 
+            border: '1px solid var(--admin-border)',
+            width: '100%'
+          }}>
             <Search size={16} color="var(--admin-text-secondary)" />
             <input
               type="text"
               placeholder="Search dialogues..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              style={{ background: 'none', border: 'none', padding: '4px 8px', color: 'var(--admin-text-primary)', outline: 'none', fontSize: '0.8rem' }}
+              style={{ background: 'none', border: 'none', padding: '4px 8px', color: 'var(--admin-text-primary)', outline: 'none', fontSize: '0.9rem', width: '100%' }}
             />
           </div>
-          <button className="sync-btn" onClick={fetchInquiries}>
+          <button className="sync-btn" onClick={fetchInquiries} style={{ width: isMobile ? '100%' : 'auto', justifyContent: 'center' }}>
              Refresh Stream
           </button>
         </div>
@@ -157,7 +174,7 @@ const Inquiries = () => {
       </div>
 
       {/* MAIN CONTENT AREA */}
-      <div className="charts-grid" style={{ gridTemplateColumns: selectedInquiry && window.innerWidth > 1024 ? '1.5fr 1fr' : '1fr' }}>
+      <div className="charts-grid" style={{ gridTemplateColumns: selectedInquiry && !isMobile ? '1.5fr 1fr' : '1fr' }}>
         <div className="chart-card">
           <div className="card-actions">
             <div style={{ display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap' }}>
@@ -281,31 +298,7 @@ const Inquiries = () => {
         )}
       </div>
 
-      {/* AI INSIGHTS PANEL (DYNAMIC) */}
-      <section className="dashboard-section" style={{ marginTop: '40px' }}>
-        <div className="insights-panel">
-          <div className="insights-badge">
-            <Cpu size={14} style={{ marginRight: '8px' }} />
-            INTELLIGENCE v2.4
-          </div>
-          <h2>Dialogue Pattern Analysis</h2>
-          <p>
-            Current inquiry volume is tracking <strong>12% higher</strong> than the previous cycle. 
-            The most frequent subject vector relates to <strong>"Partnership Opportunities"</strong>. 
-            Recommendation: Deploy priority response protocols for corporate-tagged domains.
-          </p>
-          <div className="insight-stats-grid">
-            <div className="insight-stat">
-              <span>Sentiment Shift</span>
-              <strong style={{ color: 'var(--admin-success)' }}>+4.2%</strong>
-            </div>
-            <div className="insight-stat">
-              <span>Pending Latency</span>
-              <strong>{stats.new > 0 ? 'High' : 'Optimal'}</strong>
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       {error && (
         <div className="error-banner anime-fade-in" style={{ position: 'fixed', bottom: '20px', right: '20px', zIndex: 1000 }}>

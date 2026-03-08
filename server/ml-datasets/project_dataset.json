@@ -1,0 +1,107 @@
+[
+  {
+    "projectId": "PRJ-2024-338",
+    "department": "Logistics",
+    "status": "In Progress",
+    "startDate": "2024-01-31T18:30:00.000Z",
+    "assignedEmployeesCount": 5
+  },
+  {
+    "projectId": "PRJ-2025-425",
+    "department": "Production",
+    "status": "In Progress",
+    "startDate": "2025-01-31T18:30:00.000Z",
+    "assignedEmployeesCount": 3
+  },
+  {
+    "projectId": "PRJ-2024-699",
+    "department": "Administration",
+    "status": "In Progress",
+    "startDate": "2023-12-31T18:30:00.000Z",
+    "assignedEmployeesCount": 4
+  },
+  {
+    "projectId": "PRJ-2025-528",
+    "department": "Administration",
+    "status": "In Progress",
+    "startDate": "2025-05-31T18:30:00.000Z",
+    "assignedEmployeesCount": 5
+  },
+  {
+    "projectId": "PRJ-2024-168",
+    "department": "Quality Control",
+    "status": "On Hold",
+    "startDate": "2024-08-31T18:30:00.000Z",
+    "assignedEmployeesCount": 2
+  },
+  {
+    "projectId": "PRJ-2025-383",
+    "department": "Logistics",
+    "status": "On Hold",
+    "startDate": "2025-06-30T18:30:00.000Z",
+    "assignedEmployeesCount": 2
+  },
+  {
+    "projectId": "PRJ-2026-2",
+    "department": "Design",
+    "status": "Proposed",
+    "startDate": "2026-03-06T16:17:53.752Z",
+    "assignedEmployeesCount": 0
+  },
+  {
+    "projectId": "PRJ-2026-9",
+    "department": "Logistics",
+    "status": "Proposed",
+    "startDate": "2026-03-06T16:17:53.810Z",
+    "assignedEmployeesCount": 0
+  },
+  {
+    "projectId": "PRJ-2024-549",
+    "department": "Administration",
+    "status": "Proposed",
+    "startDate": "2024-11-30T18:30:00.000Z",
+    "assignedEmployeesCount": 5
+  },
+  {
+    "projectId": "PRJ-2024-524",
+    "department": "Design",
+    "status": "Proposed",
+    "startDate": "2024-04-30T18:30:00.000Z",
+    "assignedEmployeesCount": 2
+  },
+  {
+    "projectId": "PRJ-2025-427",
+    "department": "Quality Control",
+    "status": "Proposed",
+    "startDate": "2025-11-30T18:30:00.000Z",
+    "assignedEmployeesCount": 4
+  },
+  {
+    "projectId": "PRJ-2025-548",
+    "department": "Administration",
+    "status": "Proposed",
+    "startDate": "2025-11-30T18:30:00.000Z",
+    "assignedEmployeesCount": 5
+  },
+  {
+    "projectId": "PRJ-2024-556",
+    "department": "Production",
+    "status": "Proposed",
+    "startDate": "2024-01-31T18:30:00.000Z",
+    "assignedEmployeesCount": 5
+  },
+  {
+    "projectId": "PRJ-2024-255",
+    "department": "Quality Control",
+    "status": "Proposed",
+    "startDate": "2024-01-31T18:30:00.000Z",
+    "assignedEmployeesCount": 3
+  },
+  {
+    "projectId": "PRJ-2025-348",
+    "department": "Design",
+    "status": "Proposed",
+    "startDate": "2025-08-31T18:30:00.000Z",
+    "assignedEmployeesCount": 2
+  }
+]
