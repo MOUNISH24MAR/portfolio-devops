@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "../config";
 import { useState, useEffect } from "react";
 import "./admin_css/Approvals.css";
 import { CheckCircle, XCircle, Eye, MessageSquare, History } from "lucide-react";
@@ -17,10 +18,10 @@ const CompanyApprovals = () => {
         try {
             const token = localStorage.getItem("token");
             const [pendingRes, approvedRes] = await Promise.all([
-                fetch("http://localhost:5000/api/approvals/company", {
+                fetch(`${API_BASE_URL}/api/approvals/company`, {
                     headers: { "Authorization": `Bearer ${token}` }
                 }),
-                fetch("http://localhost:5000/api/company", {
+                fetch(`${API_BASE_URL}/api/company`, {
                     headers: { "Authorization": `Bearer ${token}` }
                 })
             ]);
@@ -39,13 +40,16 @@ const CompanyApprovals = () => {
 
     const handleAction = async (id, action) => {
         try {
-            const res = await fetch(`http://localhost:5000/api/approvals/${id}`, {
+            // Normalize action for backend generic handler
+            const normalizedAction = action === 'APPROVED' ? 'Approved' : 'Rejected';
+            
+            const res = await fetch(`${API_BASE_URL}/api/approvals/${id}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${localStorage.getItem("token")}`
                 },
-                body: JSON.stringify({ action, comments, isCompany: true })
+                body: JSON.stringify({ action: normalizedAction, comments })
             });
 
             if (res.ok) {
@@ -85,20 +89,20 @@ const CompanyApprovals = () => {
                             <p>No pending company profiles.</p>
                         </div>
                     ) : (
-                        pendingCompanies.map(comp => (
+                        pendingCompanies.map(sub => (
                             <div
-                                key={comp._id}
-                                className={`submission-card ${selectedCompany?._id === comp._id ? 'active' : ''}`}
-                                onClick={() => setSelectedCompany(comp)}
+                                key={sub._id}
+                                className={`submission-card ${selectedCompany?._id === sub._id ? 'active' : ''}`}
+                                onClick={() => setSelectedCompany(sub)}
                             >
                                 <div className="sub-meta">
-                                    <span className="sub-type">VERSION: {comp.version}</span>
+                                    <span className="sub-type">VERSION: {sub.dataSnapshot.version}</span>
                                     <span className="sub-date">
-                                        {new Date(comp.createdAt).toLocaleDateString()}
+                                        {new Date(sub.submittedAt).toLocaleDateString()}
                                     </span>
                                 </div>
-                                <h3>{comp.name}</h3>
-                                <p className="sub-description">Submitted by {comp.submittedBy?.name || 'Manager'}</p>
+                                <h3>{sub.dataSnapshot.name}</h3>
+                                <p className="sub-description">Submitted by {sub.managerId?.name || sub.managerId?.username || 'Manager'}</p>
                                 <div className="sub-actions">
                                     <button className="view-btn">
                                         <Eye size={14} /> <span>Review Version</span>
@@ -153,23 +157,23 @@ const CompanyApprovals = () => {
 
                                     {/* Right: New Submission */}
                                     <div className="comparison-pane new-version">
-                                        <h3>New Submission (v{selectedCompany.version})</h3>
+                                        <h3>New Submission (v{selectedCompany.dataSnapshot.version})</h3>
                                         <div className="ver-data">
-                                            <div className={`data-row ${selectedCompany.name !== currentApproved?.name ? 'changed' : ''}`}>
+                                            <div className={`data-row ${selectedCompany.dataSnapshot.name !== currentApproved?.name ? 'changed' : ''}`}>
                                                 <span className="label">Name:</span>
-                                                <span className="val">{selectedCompany.name}</span>
+                                                <span className="val">{selectedCompany.dataSnapshot.name}</span>
                                             </div>
-                                            <div className={`data-row ${selectedCompany.location !== currentApproved?.location ? 'changed' : ''}`}>
+                                            <div className={`data-row ${selectedCompany.dataSnapshot.location !== currentApproved?.location ? 'changed' : ''}`}>
                                                 <span className="label">Location:</span>
-                                                <span className="val">{selectedCompany.location}</span>
+                                                <span className="val">{selectedCompany.dataSnapshot.location}</span>
                                             </div>
-                                            <div className={`data-row ${selectedCompany.establishedYear !== currentApproved?.establishedYear ? 'changed' : ''}`}>
+                                            <div className={`data-row ${selectedCompany.dataSnapshot.establishedYear !== currentApproved?.establishedYear ? 'changed' : ''}`}>
                                                 <span className="label">Established:</span>
-                                                <span className="val">{selectedCompany.establishedYear}</span>
+                                                <span className="val">{selectedCompany.dataSnapshot.establishedYear}</span>
                                             </div>
-                                            <div className={`data-row ${selectedCompany.description !== currentApproved?.description ? 'changed' : ''}`}>
+                                            <div className={`data-row ${selectedCompany.dataSnapshot.description !== currentApproved?.description ? 'changed' : ''}`}>
                                                 <span className="label">Description:</span>
-                                                <p className="val-text">{selectedCompany.description}</p>
+                                                <p className="val-text">{selectedCompany.dataSnapshot.description}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -189,13 +193,13 @@ const CompanyApprovals = () => {
                                 <div className="form-buttons">
                                     <button
                                         className="approve-btn"
-                                        onClick={() => handleAction(selectedCompany._id, 'APPROVED')}
+                                        onClick={() => handleAction(selectedCompany._id, 'Approved')}
                                     >
                                         <CheckCircle size={18} /> <span>Approve Profile</span>
                                     </button>
                                     <button
                                         className="reject-btn"
-                                        onClick={() => handleAction(selectedCompany._id, 'REJECTED')}
+                                        onClick={() => handleAction(selectedCompany._id, 'Rejected')}
                                     >
                                         <XCircle size={18} /> <span>Reject Changes</span>
                                     </button>

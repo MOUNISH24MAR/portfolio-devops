@@ -15,6 +15,7 @@ const adminRoutes = require("./routes/admin");
 const mediaRoutes = require("./routes/media");
 const updateRoutes = require("./routes/updates");
 const contactRoutes = require("./routes/contact");
+const mlRoutes = require("./routes/ml");
 
 const app = express();
 app.use(cors());
@@ -33,6 +34,7 @@ app.use("/api/admin", adminRoutes);
 app.use("/api/media", mediaRoutes);
 app.use("/api/updates", updateRoutes);
 app.use("/api/contact", contactRoutes);
+app.use("/api/ml", mlRoutes);
 app.use("/api/dashboard", require("./routes/dashboard"));
 
 
@@ -46,6 +48,7 @@ app.get("/", (req, res) => {
   res.send("Backend is running");
 });
 
-app.listen(5000, () => {
-  console.log("Server running on port 5000");
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });

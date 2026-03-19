@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "../config";
 import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useCompany } from "../context/CompanyContext";
@@ -26,7 +27,7 @@ const ManagerDashboard = () => {
       const headers = { "Authorization": `Bearer ${token}` };
 
       // Fetch Activity
-      const activityRes = await fetch("http://localhost:5000/api/dashboard/activity", { headers });
+      const activityRes = await fetch(`${API_BASE_URL}/api/dashboard/activity`, { headers });
       if (activityRes.ok) {
         const activityData = await activityRes.json();
         setRecentItems(activityData);
@@ -35,7 +36,7 @@ const ManagerDashboard = () => {
       }
 
       // Fetch Stats
-      const statsRes = await fetch("http://localhost:5000/api/dashboard/stats", { headers });
+      const statsRes = await fetch(`${API_BASE_URL}/api/dashboard/stats`, { headers });
       if (statsRes.ok) {
         const statsData = await statsRes.json();
         setStats(statsData);

@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "../config";
 import { useState, useEffect } from "react";
 import "./mang_css/ManagerCommon.css";
 
@@ -16,7 +17,7 @@ const OperationsReportSubmission = () => {
     const fetchReports = async () => {
         try {
             const token = localStorage.getItem("token");
-            const res = await fetch("http://localhost:5000/api/reports", {
+            const res = await fetch(`${API_BASE_URL}/api/reports`, {
                 headers: { "Authorization": `Bearer ${token}` }
             });
             if (res.ok) {
@@ -35,7 +36,7 @@ const OperationsReportSubmission = () => {
     const handleAction = async (submit = false) => {
         try {
             const token = localStorage.getItem("token");
-            const res = await fetch("http://localhost:5000/api/reports", {
+            const res = await fetch(`${API_BASE_URL}/api/reports`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -135,7 +136,7 @@ const OperationsReportSubmission = () => {
                                             style={{ padding: '4px 12px', fontSize: '0.75rem' }}
                                             onClick={async () => {
                                                 const token = localStorage.getItem("token");
-                                                await fetch(`http://localhost:5000/api/reports/${rep._id}`, {
+                                                await fetch(`${API_BASE_URL}/api/reports/${rep._id}`, {
                                                     method: "PUT",
                                                     headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
                                                     body: JSON.stringify({ submit: true })

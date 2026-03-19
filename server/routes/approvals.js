@@ -22,10 +22,14 @@ const Product = require("../models/Product");
 // @access  Private (Admin)
 router.get("/company", auth, role(["ADMIN"]), async (req, res) => {
     try {
-        const pendingCompanies = await Company.find({ status: "PENDING" })
-            .populate("submittedBy", "username name")
-            .sort({ createdAt: -1 });
-        res.json(pendingCompanies);
+        const pendingSubmissions = await Submission.find({ 
+            entityType: 'Company',
+            status: 'Pending' 
+        })
+        .populate("managerId", "username name")
+        .sort({ submittedAt: -1 });
+        
+        res.json(pendingSubmissions);
     } catch (err) {
         console.error(err.message);
         res.status(500).json({ msg: "Server Error" });
@@ -47,27 +51,7 @@ router.get("/", auth, role(["ADMIN"]), async (req, res) => {
             .populate("managerId", "username")
             .sort({ submittedAt: -1 });
 
-        const pendingCompanies = await Company.find({ status: "PENDING" })
-            .populate("submittedBy", "username")
-            .sort({ createdAt: -1 });
-
-        const formattedCompanies = pendingCompanies.map(comp => ({
-            _id: comp._id,
-            managerId: comp.submittedBy,
-            entityType: 'Company',
-            submittedAt: comp.createdAt,
-            status: 'Pending',
-            isCompany: true,
-            dataSnapshot: {
-                name: comp.name,
-                description: comp.description,
-                establishedYear: comp.establishedYear,
-                location: comp.location,
-                version: comp.version
-            }
-        }));
-
-        const combined = [...submissions, ...formattedCompanies].sort((a, b) => {
+        const combined = submissions.sort((a, b) => {
             const dateA = a.submittedAt || a.createdAt;
             const dateB = b.submittedAt || b.createdAt;
             return new Date(dateB) - new Date(dateA);
@@ -85,30 +69,7 @@ router.get("/", auth, role(["ADMIN"]), async (req, res) => {
 // @access  Private (Admin)
 router.post("/:id", auth, role(["ADMIN"]), async (req, res) => {
     try {
-        const { action, comments, isCompany } = req.body; 
-
-        if (isCompany) {
-            const company = await Company.findById(req.params.id);
-            if (!company) return res.status(404).json({ msg: "Company submission not found" });
-
-            company.status = action.toUpperCase(); 
-            if (company.status === 'APPROVED') {
-                company.approvedBy = req.user.id;
-                company.approvedAt = Date.now();
-            }
-            await company.save();
-
-            const activity = new Activity({
-                userId: req.user.id,
-                action: company.status,
-                entityType: 'Company',
-                entityId: company._id,
-                details: `Admin ${company.status.toLowerCase()} company profile v${company.version}`
-            });
-            await activity.save();
-
-            return res.json({ msg: `Company profile ${company.status}` });
-        }
+        const { action, comments } = req.body; 
 
         const submission = await Submission.findById(req.params.id);
         if (!submission) return res.status(404).json({ msg: "Submission not found" });
@@ -129,13 +90,15 @@ router.post("/:id", auth, role(["ADMIN"]), async (req, res) => {
 
         if (!Model) return res.status(400).json({ msg: "Invalid entity type for approval logic" });
 
-        // Capture previous state for rollback if approving
+        // Capture previous state for rollback if approving (but don't overwrite if manager already captured it)
         if (action === 'Approved' || action === 'APPROVED') {
-            const currentEntity = await Model.findById(submission.entityId);
-            if (currentEntity) {
-                submission.previousData = currentEntity.toObject();
-                submission.approvalDeadline = new Date(Date.now() + 24 * 60 * 60 * 1000); // 24h window
+            if (!submission.previousData) {
+                const currentEntity = await Model.findById(submission.entityId);
+                if (currentEntity) {
+                    submission.previousData = currentEntity.toObject();
+                }
             }
+            submission.approvalDeadline = new Date(Date.now() + 24 * 60 * 60 * 1000); // 24h window
         }
 
         submission.status = action;
@@ -220,11 +183,11 @@ router.post("/:id/revoke", auth, role(["ADMIN"]), async (req, res) => {
         if (Model) {
             // Restore previous state
             const rollbackData = { ...submission.previousData };
-            // Ensure status is reset or maintained as per logic (usually 'Pending' again)
+            // Ensure status is reset or maintained as per logic (usually 'PendingApproval' again)
             if (submission.entityType === 'Company') {
                 rollbackData.status = 'PENDING';
             } else {
-                rollbackData.submissionStatus = 'Pending';
+                rollbackData.submissionStatus = 'PendingApproval';
             }
 
             await Model.findByIdAndUpdate(submission.entityId, rollbackData, { overwrite: true });

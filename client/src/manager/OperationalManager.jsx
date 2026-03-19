@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "../config";
 import { useState, useEffect } from "react";
 import "./mang_css/ManagerCommon.css";
 
@@ -19,7 +20,7 @@ const OperationalManager = ({ domain, title, fields }) => {
     const fetchData = async () => {
         try {
             const token = localStorage.getItem("token");
-            const res = await fetch(`http://localhost:5000/api/operational/${domain}/all`, {
+            const res = await fetch(`${API_BASE_URL}/api/operational/${domain}/all`, {
                 headers: { "Authorization": `Bearer ${token}` }
             });
             if (res.ok) {
@@ -41,7 +42,7 @@ const OperationalManager = ({ domain, title, fields }) => {
         e.preventDefault();
         try {
             const token = localStorage.getItem("token");
-            const res = await fetch(`http://localhost:5000/api/operational/${domain}`, {
+            const res = await fetch(`${API_BASE_URL}/api/operational/${domain}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -66,7 +67,7 @@ const OperationalManager = ({ domain, title, fields }) => {
     const handleStatusChange = async (id) => {
         try {
             const token = localStorage.getItem("token");
-            await fetch(`http://localhost:5000/api/operational/${domain}/${id}`, {
+            await fetch(`${API_BASE_URL}/api/operational/${domain}/${id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",

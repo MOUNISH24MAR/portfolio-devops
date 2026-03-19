@@ -77,6 +77,9 @@ router.put("/:id", auth, role(['MANAGER', 'ADMIN']), async (req, res) => {
         if (!media) return res.status(404).json({ msg: "Media not found" });
 
         if (submit) {
+            // Capture previous data for rollback support
+            const previousDataSnapshot = media.toObject();
+
             media.submissionStatus = 'PendingApproval';
             await media.save();
 
@@ -84,6 +87,7 @@ router.put("/:id", auth, role(['MANAGER', 'ADMIN']), async (req, res) => {
                 managerId: req.user.id,
                 entityType: 'Media',
                 entityId: media._id,
+                previousData: previousDataSnapshot,
                 dataSnapshot: media.toObject()
             });
             await submission.save();

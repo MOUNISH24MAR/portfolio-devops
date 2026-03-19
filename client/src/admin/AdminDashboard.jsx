@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "../config";
 import { useState, useEffect } from "react";
 import {
   Users,
@@ -75,7 +76,7 @@ const AdminDashboard = () => {
       const token = localStorage.getItem("token");
       const headers = { "Authorization": `Bearer ${token}` };
 
-      const res = await fetch("http://localhost:5000/api/admin/stats", { headers });
+      const res = await fetch(`${API_BASE_URL}/api/admin/stats`, { headers });
       if (!res.ok) throw new Error("Synchronization failure with core node.");
 
       const data = await res.json();
@@ -113,7 +114,7 @@ const AdminDashboard = () => {
       }
 
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:5000/api/admin/analyze-graph", {
+      const res = await fetch(`${API_BASE_URL}/api/admin/analyze-graph`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

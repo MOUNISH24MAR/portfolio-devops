@@ -81,6 +81,9 @@ router.put("/:id", auth, role(["MANAGER", "ADMIN"]), async (req, res) => {
         const updates = { ...req.body };
         if (submit) updates.submissionStatus = 'PendingApproval';
 
+        // Capture previous data for rollback support
+        const previousDataSnapshot = project.toObject();
+
         project = await Project.findByIdAndUpdate(req.params.id, { $set: updates }, { new: true });
 
         if (submit) {
@@ -88,6 +91,7 @@ router.put("/:id", auth, role(["MANAGER", "ADMIN"]), async (req, res) => {
                 managerId: req.user.id,
                 entityType: 'Project',
                 entityId: project._id,
+                previousData: previousDataSnapshot,
                 dataSnapshot: project.toObject()
             });
             await submission.save();

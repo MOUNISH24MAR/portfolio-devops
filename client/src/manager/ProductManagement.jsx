@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "../config";
 import { useState, useEffect, useRef } from "react";
 import "./mang_css/ManagerCommon.css";
 import { Package, Plus, Trash2, CheckCircle2, Clock, AlertCircle } from "lucide-react";
@@ -16,7 +17,7 @@ const ProductManagement = () => {
     const fetchProducts = async () => {
         try {
             const token = localStorage.getItem("token");
-            const res = await fetch("http://localhost:5000/api/products/all", {
+            const res = await fetch(`${API_BASE_URL}/api/products/all`, {
                 headers: { "Authorization": `Bearer ${token}` }
             });
             if (res.ok) {
@@ -56,7 +57,7 @@ const ProductManagement = () => {
 
         try {
             const token = localStorage.getItem("token");
-            const res = await fetch("http://localhost:5000/api/products", {
+            const res = await fetch(`${API_BASE_URL}/api/products`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

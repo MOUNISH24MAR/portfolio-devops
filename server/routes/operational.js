@@ -140,6 +140,9 @@ router.put("/:domain/:id", auth, role(['MANAGER', 'ADMIN']), async (req, res) =>
             updateData.submissionStatus = 'PendingApproval';
         }
 
+        // Capture previous data for rollback support
+        const previousDataSnapshot = record.toObject();
+
         const updatedRecord = await Model.findByIdAndUpdate(id, { $set: updateData }, { new: true });
 
         if (submit) {
@@ -147,6 +150,7 @@ router.put("/:domain/:id", auth, role(['MANAGER', 'ADMIN']), async (req, res) =>
                 managerId: req.user.id,
                 entityType: getEntityType(domain),
                 entityId: updatedRecord._id,
+                previousData: previousDataSnapshot,
                 dataSnapshot: updatedRecord.toObject()
             });
             await submission.save();

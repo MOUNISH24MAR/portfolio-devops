@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "../config";
 import { useState, useEffect } from "react";
 import { 
   Mail, 
@@ -40,7 +41,7 @@ const Inquiries = () => {
   const fetchInquiries = async () => {
     try {
       setLoading(true);
-      const response = await fetch("http://localhost:5000/api/admin/contact-inquiries", {
+      const response = await fetch(`${API_BASE_URL}/api/admin/contact-inquiries`, {
         headers: {
           "Authorization": `Bearer ${localStorage.getItem("token")}`
         }
@@ -60,7 +61,7 @@ const Inquiries = () => {
 
   const handleStatusToggle = async (id) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/admin/contact-inquiries/${id}`, {
+      const response = await fetch(`${API_BASE_URL}/api/admin/contact-inquiries/${id}`, {
         method: "PATCH",
         headers: {
           "Authorization": `Bearer ${localStorage.getItem("token")}`
@@ -84,7 +85,7 @@ const Inquiries = () => {
     if (!window.confirm("Are you sure you want to delete this inquiry?")) return;
     
     try {
-      const response = await fetch(`http://localhost:5000/api/admin/contact-inquiries/${id}`, {
+      const response = await fetch(`${API_BASE_URL}/api/admin/contact-inquiries/${id}`, {
         method: "DELETE",
         headers: {
           "Authorization": `Bearer ${localStorage.getItem("token")}`

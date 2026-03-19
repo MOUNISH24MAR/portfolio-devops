@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "../config";
 import { useState, useEffect } from "react";
 import "./mang_css/ManagerCommon.css";
 
@@ -18,7 +19,7 @@ const ProjectsManagement = () => {
     const fetchProjects = async () => {
         try {
             const token = localStorage.getItem("token");
-            const res = await fetch("http://localhost:5000/api/projects", {
+            const res = await fetch(`${API_BASE_URL}/api/projects`, {
                 headers: { "Authorization": `Bearer ${token}` }
             });
             if (res.ok) {
@@ -33,7 +34,7 @@ const ProjectsManagement = () => {
     const fetchEmployees = async () => {
         try {
             const token = localStorage.getItem("token");
-            const res = await fetch("http://localhost:5000/api/employees", {
+            const res = await fetch(`${API_BASE_URL}/api/employees`, {
                 headers: { "Authorization": `Bearer ${token}` }
             });
             if (res.ok) {
@@ -53,7 +54,7 @@ const ProjectsManagement = () => {
         e.preventDefault();
         try {
             const token = localStorage.getItem("token");
-            const res = await fetch("http://localhost:5000/api/projects", {
+            const res = await fetch(`${API_BASE_URL}/api/projects`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -169,7 +170,7 @@ const ProjectsManagement = () => {
                                             style={{ padding: '4px 12px', fontSize: '0.75rem' }}
                                             onClick={async () => {
                                                 const token = localStorage.getItem("token");
-                                                await fetch(`http://localhost:5000/api/projects/${prj._id}`, {
+                                                await fetch(`${API_BASE_URL}/api/projects/${prj._id}`, {
                                                     method: "PUT",
                                                     headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
                                                     body: JSON.stringify({ submit: true })

@@ -76,6 +76,9 @@ router.put("/:id", auth, role(["MANAGER"]), async (req, res) => {
         const submit = req.body.submit;
         if (submit) updates.submissionStatus = 'PendingApproval';
 
+        // Capture previous data for rollback support
+        const previousDataSnapshot = report.toObject();
+
         report = await OperationalReport.findByIdAndUpdate(req.params.id, { $set: updates }, { new: true });
 
         if (submit) {
@@ -83,6 +86,7 @@ router.put("/:id", auth, role(["MANAGER"]), async (req, res) => {
                 managerId: req.user.id,
                 entityType: 'OperationalReport',
                 entityId: report._id,
+                previousData: previousDataSnapshot,
                 dataSnapshot: report.toObject()
             });
             await submission.save();
@@ -97,30 +101,6 @@ router.put("/:id", auth, role(["MANAGER"]), async (req, res) => {
         });
         await activity.save();
 
-        res.json(report);
-    } catch (err) {
-        console.error(err.message);
-        res.status(500).json({ msg: "Server Error" });
-    }
-});
-
-// @route   PATCH /api/reports/:id/verify
-// @desc    Admin verify/reject report
-// @access  Private (Admin)
-router.patch("/:id/verify", auth, role(["ADMIN"]), async (req, res) => {
-    try {
-        const { status, remarks } = req.body;
-        let report = await OperationalReport.findById(req.params.id);
-        if (!report) return res.status(404).json({ msg: "Report not found" });
-
-        report.status = status;
-        report.verificationMetadata = {
-            verifiedBy: req.user.id,
-            verifiedAt: Date.now(),
-            rejectionReason: status === 'Rejected' ? remarks : ""
-        };
-
-        await report.save();
         res.json(report);
     } catch (err) {
         console.error(err.message);

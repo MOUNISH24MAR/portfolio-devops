@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "../config";
 import { useState, useEffect } from "react";
 import "./mang_css/ManagerCommon.css";
 
@@ -18,7 +19,7 @@ const CompanyManagement = () => {
     const fetchCompany = async () => {
         try {
             const token = localStorage.getItem("token");
-            const res = await fetch("http://localhost:5000/api/company/all", {
+            const res = await fetch(`${API_BASE_URL}/api/company/all`, {
                 headers: { "Authorization": `Bearer ${token}` }
             });
             const data = await res.json();
@@ -47,7 +48,7 @@ const CompanyManagement = () => {
     const handleSubmit = async (submit = false) => {
         try {
             const token = localStorage.getItem("token");
-            const res = await fetch("http://localhost:5000/api/company", {
+            const res = await fetch(`${API_BASE_URL}/api/company`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

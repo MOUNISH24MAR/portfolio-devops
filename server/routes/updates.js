@@ -77,6 +77,9 @@ router.put("/:id", auth, role(['MANAGER', 'ADMIN']), async (req, res) => {
         if (!update) return res.status(404).json({ msg: "Update not found" });
 
         if (submit) {
+            // Capture previous data for rollback support
+            const previousDataSnapshot = update.toObject();
+
             update.submissionStatus = 'PendingApproval';
             await update.save();
 
@@ -84,6 +87,7 @@ router.put("/:id", auth, role(['MANAGER', 'ADMIN']), async (req, res) => {
                 managerId: req.user.id,
                 entityType: 'Update',
                 entityId: update._id,
+                previousData: previousDataSnapshot,
                 dataSnapshot: update.toObject()
             });
             await submission.save();

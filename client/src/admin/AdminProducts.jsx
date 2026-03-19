@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "../config";
 import { useState, useEffect } from "react";
 import "./admin_css/AdminMaster.css";
 import "./admin_css/AdminProducts.css";
@@ -38,7 +39,7 @@ const AdminProducts = () => {
         try {
             setLoading(true);
             const token = localStorage.getItem("token");
-            const res = await fetch("http://localhost:5000/api/products/all", {
+            const res = await fetch(`${API_BASE_URL}/api/products/all`, {
                 headers: { "Authorization": `Bearer ${token}` }
             });
             if (res.ok) {
@@ -57,7 +58,7 @@ const AdminProducts = () => {
 
         try {
             const token = localStorage.getItem("token");
-            const res = await fetch(`http://localhost:5000/api/products/${id}`, {
+            const res = await fetch(`${API_BASE_URL}/api/products/${id}`, {
                 method: "DELETE",
                 headers: { "Authorization": `Bearer ${token}` }
             });

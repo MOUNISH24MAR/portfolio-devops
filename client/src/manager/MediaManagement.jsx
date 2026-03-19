@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "../config";
 import { useState, useEffect, useRef } from "react";
 import "./mang_css/ManagerCommon.css";
 
@@ -15,7 +16,7 @@ const MediaManagement = () => {
     const fetchMedia = async () => {
         try {
             const token = localStorage.getItem("token");
-            const res = await fetch("http://localhost:5000/api/media/all", {
+            const res = await fetch(`${API_BASE_URL}/api/media/all`, {
                 headers: { "Authorization": `Bearer ${token}` }
             });
             if (res.ok) {
@@ -68,7 +69,7 @@ const MediaManagement = () => {
 
         try {
             const token = localStorage.getItem("token");
-            const res = await fetch("http://localhost:5000/api/media", {
+            const res = await fetch(`${API_BASE_URL}/api/media`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -253,7 +254,7 @@ const MediaManagement = () => {
                                         onClick={async (e) => {
                                             e.stopPropagation();
                                             const token = localStorage.getItem("token");
-                                            await fetch(`http://localhost:5000/api/media/${item._id}`, {
+                                            await fetch(`${API_BASE_URL}/api/media/${item._id}`, {
                                                 method: "PUT",
                                                 headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
                                                 body: JSON.stringify({ submit: true })

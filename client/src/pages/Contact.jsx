@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "../config";
 import { useState } from "react";
 import "./page_css/Contact.css";
 import ScrollAnimatedSection from "../components/ScrollAnimatedSection";
@@ -20,7 +21,7 @@ function Contact() {
     setErrorMessage("");
 
     try {
-      const response = await fetch("http://localhost:5000/api/contact", {
+      const response = await fetch(`${API_BASE_URL}/api/contact`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

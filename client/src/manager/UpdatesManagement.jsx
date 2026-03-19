@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "../config";
 import { useState, useEffect } from "react";
 import "./mang_css/ManagerCommon.css";
 
@@ -14,7 +15,7 @@ const UpdatesManagement = () => {
     const fetchUpdates = async () => {
         try {
             const token = localStorage.getItem("token");
-            const res = await fetch("http://localhost:5000/api/updates/all", {
+            const res = await fetch(`${API_BASE_URL}/api/updates/all`, {
                 headers: { "Authorization": `Bearer ${token}` }
             });
             const data = await res.json();
@@ -30,7 +31,7 @@ const UpdatesManagement = () => {
         if (e) e.preventDefault();
         try {
             const token = localStorage.getItem("token");
-            const res = await fetch("http://localhost:5000/api/updates", {
+            const res = await fetch(`${API_BASE_URL}/api/updates`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -125,7 +126,7 @@ const UpdatesManagement = () => {
                                             style={{ padding: '4px 12px', fontSize: '0.75rem', minWidth: 'auto', height: 'auto' }}
                                             onClick={async () => {
                                                 const token = localStorage.getItem("token");
-                                                await fetch(`http://localhost:5000/api/updates/${update._id}`, {
+                                                await fetch(`${API_BASE_URL}/api/updates/${update._id}`, {
                                                     method: "PUT",
                                                     headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
                                                     body: JSON.stringify({ submit: true })

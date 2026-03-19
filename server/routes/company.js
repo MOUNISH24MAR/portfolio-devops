@@ -1,5 +1,6 @@
 const express = require("express");
 const Company = require("../models/Company");
+const Submission = require("../models/Submission");
 const auth = require("../middleware/auth");
 const role = require("../middleware/role");
 const Activity = require("../models/Activity");
@@ -50,6 +51,22 @@ router.post("/", auth, role(['MANAGER', 'ADMIN']), async (req, res) => {
     });
 
     await company.save();
+    
+    if (submit) {
+      const submission = new Submission({
+        managerId: req.user.id,
+        entityType: 'Company',
+        entityId: company._id,
+        dataSnapshot: {
+          name: company.name,
+          description: company.description,
+          establishedYear: company.establishedYear,
+          location: company.location,
+          version: company.version
+        }
+      });
+      await submission.save();
+    }
 
     const activity = new Activity({
       userId: req.user.id,

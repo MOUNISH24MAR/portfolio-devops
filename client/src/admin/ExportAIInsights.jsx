@@ -1,3 +1,4 @@
+import { ML_PROXY_URL as ML_API } from "../config";
 import { useState, useEffect } from "react";
 import "./admin_css/AdminMaster.css";
 import "./admin_css/AdminProducts.css";
@@ -34,8 +35,6 @@ import {
   Radar,
 } from "recharts";
 
-const ML_API = "http://localhost:8000";
-
 const ExportAIInsights = () => {
   const [forecast, setForecast] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -65,7 +64,9 @@ const ExportAIInsights = () => {
     try {
       setLoading(true);
       setError(null);
-      const res = await fetch(`${ML_API}/api/export/forecast`);
+      const res = await fetch(`${ML_API}/forecast`, {
+        headers: { "Authorization": `Bearer ${localStorage.getItem("token")}` }
+      });
       if (!res.ok) throw new Error("ML service unreachable");
       const data = await res.json();
       setForecast(data);
@@ -82,14 +83,20 @@ const ExportAIInsights = () => {
       
       // Fetch both revenue and demand concurrently
       const [revRes, demRes] = await Promise.all([
-        fetch(`${ML_API}/api/export/predict`, {
+        fetch(`${ML_API}/predict`, {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: { 
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem("token")}`
+          },
           body: JSON.stringify(form),
         }),
-        fetch(`${ML_API}/api/export/demand`, {
+        fetch(`${ML_API}/demand`, {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: { 
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem("token")}`
+          },
           body: JSON.stringify({
             product_type: form.product_type,
             destination_country: form.destination_country,

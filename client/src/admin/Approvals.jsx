@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "../config";
 import { useState, useEffect } from "react";
 import "./admin_css/Approvals.css";
 import { CheckCircle, XCircle, Eye, MessageSquare } from "lucide-react";
@@ -15,7 +16,7 @@ const Approvals = () => {
 
   const fetchSubmissions = async () => {
     try {
-      const res = await fetch("http://localhost:5000/api/approvals", {
+      const res = await fetch(`${API_BASE_URL}/api/approvals`, {
         headers: { "Authorization": `Bearer ${localStorage.getItem("token")}` }
       });
       const data = await res.json();
@@ -29,7 +30,7 @@ const Approvals = () => {
 
   const handleAction = async (id, action, isCompany = false, reason = "") => {
     try {
-      const endpoint = action === 'Revoke' ? `http://localhost:5000/api/approvals/${id}/revoke` : `http://localhost:5000/api/approvals/${id}`;
+      const endpoint = action === 'Revoke' ? `${API_BASE_URL}/api/approvals/${id}/revoke` : `${API_BASE_URL}/api/approvals/${id}`;
       const method = "POST";
       const body = action === 'Revoke' ? { reason } : { action, comments, isCompany };
 
@@ -239,7 +240,7 @@ const Approvals = () => {
               <div className="approval-form">
                 {selectedSubmission.status === 'Pending' ? (
                   <>
-                    {selectedSubmission.isCompany && (
+                    {selectedSubmission.entityType === 'Company' && (
                       <div style={{ padding: '12px', backgroundColor: '#e9fac8', border: '1px solid #c0eb75', borderRadius: '4px', marginBottom: '16px', fontSize: '0.85rem' }}>
                         <strong>Tip:</strong> You can view a detailed side-by-side version comparison on the <a href="/admin/company-approvals" style={{ color: '#2b8a3e', fontWeight: 'bold', textDecoration: 'underline' }}>Company Profiling</a> page.
                       </div>
@@ -255,13 +256,13 @@ const Approvals = () => {
                     <div className="form-buttons">
                       <button
                         className="approve-btn"
-                        onClick={() => handleAction(selectedSubmission._id, 'Approved', selectedSubmission.isCompany)}
+                        onClick={() => handleAction(selectedSubmission._id, 'Approved')}
                       >
                         <CheckCircle size={18} /> <span>Approve</span>
                       </button>
                       <button
                         className="reject-btn"
-                        onClick={() => handleAction(selectedSubmission._id, 'Rejected', selectedSubmission.isCompany)}
+                        onClick={() => handleAction(selectedSubmission._id, 'Rejected')}
                       >
                         <XCircle size={18} /> <span>Reject</span>
                       </button>

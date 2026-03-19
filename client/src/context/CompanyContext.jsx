@@ -1,3 +1,4 @@
+import { API_BASE_URL } from "../config";
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
 const CompanyContext = createContext();
@@ -9,7 +10,7 @@ export const CompanyProvider = ({ children }) => {
     useEffect(() => {
         const fetchCompanyData = async () => {
             try {
-                const res = await fetch("http://localhost:5000/api/company");
+                const res = await fetch(`${API_BASE_URL}/api/company`);
                 const data = await res.json();
                 if (data && data.name) {
                     setCompany(data);
