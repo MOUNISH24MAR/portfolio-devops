@@ -103,10 +103,7 @@ console.log("-----------------------------------------");
         const maskedUri = (process.env.MONGODB_URI || "").replace(/:([^@]+)@/, ":****@");
         console.log(`Connection target identifies as: ${maskedUri}`);
 
-        await mongoose.connect(process.env.MONGODB_URI, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        });
+        await mongoose.connect(process.env.MONGODB_URI);
 
         console.log("MongoDB Connected ✅ (Status: 1/1 Online)");
         console.log("-----------------------------------------");
