@@ -20,6 +20,8 @@ const app = express();
 
 // Middleware
 const allowedOrigins = [
+  "http://44.212.33.196:3000",
+  "http://44.212.33.196:5173",
   "http://localhost:5173",
   "http://localhost:3000",
   "https://garment-portfolio.vercel.app"
