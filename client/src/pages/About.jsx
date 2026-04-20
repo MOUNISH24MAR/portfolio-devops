@@ -28,7 +28,7 @@ function About() {
                 <h2>Our History</h2>
                 <div className="section-divider"></div>
                 <p>
-                  Established in {company?.establishedYear || "2016"} by Mounish Raj and Renugadevi, {company?.name || "VR Fashions"} began its journey
+                  Established in {company?.establishedYear || "2016"} by Mohan Raj and Renugadevi, {company?.name || "VR Fashions"} began its journey
                   with 40 sets of machinery in Kovilvali, Tirupur.
                 </p>
                 <p>
